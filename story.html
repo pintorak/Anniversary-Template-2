@@ -1,99 +1,247 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Our Story ♡</title>
 
+  <style>
+    :root {
+      --claret: #670626;
+      --pink: #FFBDC5;
+      --cream: #FFF9F8;
+      --white: #FFFFFF;
+    }
 
-  <!-- GOOGLE FONTS -->
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      font-family: Arial, sans-serif;
+      color: var(--claret);
 
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+      background-color: var(--pink);
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
+      background-image:
+        radial-gradient(
+          rgba(103, 6, 38, 0.13) 1.4px,
+          transparent 1.5px
+        );
 
+      background-size: 30px 30px;
+    }
 
-  <!-- CSS -->
+    .page {
+      width: 100%;
+      max-width: 760px;
+      margin: auto;
+      padding: 45px 20px 60px;
+    }
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+    .top {
+      text-align: center;
+      margin-bottom: 32px;
+    }
 
+    .chapter {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 42px;
+      font-weight: normal;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .heart {
+      color: var(--pink);
+    }
+
+    .intro {
+      max-width: 440px;
+      margin: auto;
+      color: #8c5868;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .story-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .story-card {
+      background: var(--cream);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow:
+        0 12px 30px rgba(103, 6, 38, 0.10);
+    }
+
+    .photo {
+      width: 100%;
+      height: 180px;
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8d9dd,
+          #fff4f4
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: rgba(103, 6, 38, 0.35);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .story-content {
+      padding: 18px 5px 5px;
+    }
+
+    .story-number {
+      font-size: 9px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 7px;
+    }
+
+    .story-text {
+      color: #8c5868;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .bottom {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .continue {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 190px;
+      padding: 13px 22px;
+
+      border-radius: 999px;
+
+      background: var(--claret);
+      color: white;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 8px 20px rgba(103, 6, 38, 0.18);
+
+      transition: 0.15s ease;
+    }
+
+    .continue:hover {
+      background: #820a32;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+
+      color: rgba(103, 6, 38, 0.55);
+
+      font-family: Georgia, serif;
+      font-size: 12px;
+    }
+
+    @media (max-width: 500px) {
+      .page {
+        padding: 32px 15px 45px;
+      }
+
+      h1 {
+        font-size: 35px;
+      }
+
+      .photo {
+        height: 155px;
+      }
+    }
+  </style>
 </head>
 
+<body>
 
-<body class="story-page">
+  <main class="page">
 
+    <header class="top">
 
-  <main class="story-wrapper">
-
-
-    <!-- TOP -->
-
-    <header class="story-header">
-
-      <p class="eyebrow">
+      <div class="chapter">
         CHAPTER 01
-      </p>
+      </div>
 
       <h1>
-        Our Story
+        Our Story <span class="heart">♡</span>
       </h1>
 
-      <p class="story-intro">
-        ทุกเรื่องราวของเรา<br>
-        เริ่มต้นจากบางอย่างที่แสนธรรมดา
+      <p class="intro">
+        เรื่องราวของเราอาจไม่ได้สมบูรณ์แบบ
+        แต่ทุกช่วงเวลาที่มีเธออยู่ในนั้น
+        มีความหมายเสมอ
       </p>
 
     </header>
 
 
-    <!-- STORY -->
-
     <section class="story-list">
-
-
-      <!-- STORY 01 -->
 
       <article class="story-card">
 
-        <div class="story-number">
-          01
+        <div class="photo">
+          OUR FIRST PHOTO
         </div>
 
-        <div class="story-photo photo-one">
-        </div>
+        <div class="story-content">
 
-        <div class="story-text">
-
-          <span class="story-label">
-            THE BEGINNING
-          </span>
+          <div class="story-number">
+            01 · THE BEGINNING
+          </div>
 
           <h2>
             วันแรกที่เราได้รู้จักกัน
           </h2>
 
-          <p>
-            จากคนสองคนที่อาจไม่เคยคิดเลยว่า
-            วันหนึ่งจะกลายมาเป็นคนสำคัญของกันและกัน
+          <p class="story-text">
+            บางครั้งเรื่องราวที่สำคัญที่สุด
+            ก็เริ่มต้นจากช่วงเวลาธรรมดา ๆ
+            ที่เราไม่รู้เลยว่า
+            วันหนึ่งมันจะกลายเป็นความทรงจำที่สำคัญ
           </p>
 
         </div>
@@ -101,31 +249,26 @@
       </article>
 
 
-      <!-- STORY 02 -->
+      <article class="story-card">
 
-      <article class="story-card reverse">
-
-        <div class="story-number">
-          02
+        <div class="photo">
+          LITTLE MOMENTS
         </div>
 
-        <div class="story-photo photo-two">
-        </div>
+        <div class="story-content">
 
-        <div class="story-text">
-
-          <span class="story-label">
-            LITTLE MOMENTS
-          </span>
+          <div class="story-number">
+            02 · LITTLE MOMENTS
+          </div>
 
           <h2>
             เรื่องเล็ก ๆ ที่กลายเป็นความทรงจำ
           </h2>
 
-          <p>
-            บางทีสิ่งที่เราจำได้ดีที่สุด
-            อาจไม่ใช่วันที่ยิ่งใหญ่
-            แต่เป็นช่วงเวลาธรรมดาที่มีเธออยู่ด้วย
+          <p class="story-text">
+            บทสนทนาเล็ก ๆ รอยยิ้ม
+            การคิดถึงกัน และช่วงเวลาธรรมดา
+            ที่ค่อย ๆ กลายเป็นเรื่องราวของเรา
           </p>
 
         </div>
@@ -133,67 +276,50 @@
       </article>
 
 
-      <!-- STORY 03 -->
-
       <article class="story-card">
 
-        <div class="story-number">
-          03
+        <div class="photo">
+          STILL US
         </div>
 
-        <div class="story-photo photo-three">
-        </div>
+        <div class="story-content">
 
-        <div class="story-text">
-
-          <span class="story-label">
-            STILL US
-          </span>
+          <div class="story-number">
+            03 · STILL US
+          </div>
 
           <h2>
             และวันนี้ก็ยังเป็นเรา
           </h2>
 
-          <p>
-            ไม่ว่าจะผ่านมากี่วัน กี่เดือน หรือกี่ปี
-            ขอบคุณที่ยังอยู่ตรงนี้
-            และเติบโตไปด้วยกัน
+          <p class="story-text">
+            จากวันแรกจนถึงวันนี้
+            เรายังมีเรื่องให้เรียนรู้
+            มีเรื่องให้หัวเราะ
+            และมีความทรงจำใหม่ ๆ ที่กำลังจะเกิดขึ้น
           </p>
 
         </div>
 
       </article>
 
-
     </section>
 
 
-    <!-- END -->
+    <div class="bottom">
 
-    <section class="story-end">
-
-      <div class="small-heart">
-        ♡
-      </div>
-
-      <p>
-        our story is still being written
-      </p>
-
-      <a
-        href="quiz.html"
-        class="next-button"
-      >
-        CONTINUE
-        <span>→</span>
+      <a href="quiz.html" class="continue">
+        CONTINUE OUR STORY →
       </a>
 
-    </section>
+      <div class="footer">
+        still writing our story ♡
+      </div>
 
+    </div>
 
   </main>
 
-
 </body>
-
 </html>
+```
