@@ -1,51 +1,65 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Our Anniversary</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="lock-page">
+<body class="pin-page">
 
-  <div class="lock-screen">
+  <div class="pin-wrapper">
 
-    <!-- รหัสที่กรอก -->
-    <div class="passcode-dots">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- กล่อง PIN -->
+    <div class="pin-card">
+
+      <div class="pin-title">
+        Enter PIN <span>🔐</span>
+      </div>
+
+      <div class="pin-subtitle">
+        ใส่รหัสผ่านเพื่อเข้าสู่ความทรงจำของเรา
+      </div>
+
+      <!-- จุด PIN -->
+      <div class="pin-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- แป้นตัวเลข -->
+      <div class="keypad">
+
+        <button class="key" data-number="1">1</button>
+        <button class="key" data-number="2">2</button>
+        <button class="key" data-number="3">3</button>
+
+        <button class="key" data-number="4">4</button>
+        <button class="key" data-number="5">5</button>
+        <button class="key" data-number="6">6</button>
+
+        <button class="key" data-number="7">7</button>
+        <button class="key" data-number="8">8</button>
+        <button class="key" data-number="9">9</button>
+
+        <button class="key clear" id="clearBtn">Clear</button>
+
+        <button class="key" data-number="0">0</button>
+
+        <button class="key delete" id="deleteBtn">⌫</button>
+
+      </div>
+
+      <div id="errorMessage"></div>
+
     </div>
-
-    <!-- ปุ่มตัวเลข -->
-    <div class="keypad">
-
-      <button class="key" data-number="1">1</button>
-      <button class="key" data-number="2">2</button>
-      <button class="key" data-number="3">3</button>
-
-      <button class="key" data-number="4">4</button>
-      <button class="key" data-number="5">5</button>
-      <button class="key" data-number="6">6</button>
-
-      <button class="key" data-number="7">7</button>
-      <button class="key" data-number="8">8</button>
-      <button class="key" data-number="9">9</button>
-
-      <div></div>
-
-      <button class="key" data-number="0">0</button>
-
-      <button class="key delete" id="deleteBtn">⌫</button>
-
-    </div>
-
-    <p id="errorMessage"></p>
 
   </div>
 
@@ -53,4 +67,3 @@
 
 </body>
 </html>
-```
