@@ -142,4 +142,483 @@ h1{
     Georgia,
     serif;
 
-  font-size:18
+  font-size:18px;
+
+  opacity:.25;
+}
+
+/* soft circle */
+
+.letter::after{
+  content:"";
+
+  position:absolute;
+
+  width:120px;
+  height:120px;
+
+  right:-60px;
+  top:-60px;
+
+  border-radius:50%;
+
+  background:var(--soft);
+}
+
+/* =========================
+   LETTER HEADER
+========================= */
+
+.letter-header{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  padding-bottom:20px;
+  margin-bottom:28px;
+
+  border-bottom:
+    1px solid rgba(103,6,38,.12);
+}
+
+.label{
+  font-size:9px;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+}
+
+.date{
+  font-size:9px;
+
+  letter-spacing:1px;
+
+  opacity:.5;
+}
+
+/* =========================
+   GREETING
+========================= */
+
+.greeting{
+  position:relative;
+  z-index:2;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:24px;
+
+  margin-bottom:24px;
+}
+
+/* =========================
+   LETTER TEXT
+========================= */
+
+.letter-text{
+  position:relative;
+  z-index:2;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans Thai",
+    sans-serif;
+
+  color:#542b38;
+
+  font-size:15px;
+
+  line-height:2;
+}
+
+.letter-text p{
+  margin-bottom:21px;
+}
+
+.letter-text p:last-child{
+  margin-bottom:0;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature{
+  position:relative;
+  z-index:2;
+
+  margin-top:32px;
+
+  padding-top:23px;
+
+  border-top:
+    1px solid rgba(103,6,38,.1);
+
+  text-align:right;
+}
+
+.signature-small{
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  opacity:.5;
+
+  margin-bottom:7px;
+}
+
+.signature-name{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:21px;
+
+  font-style:italic;
+}
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.next-area{
+  text-align:center;
+
+  margin-top:30px;
+}
+
+.next{
+  display:inline-block;
+
+  background:var(--claret);
+
+  color:#fff;
+
+  text-decoration:none;
+
+  padding:14px 25px;
+
+  border-radius:999px;
+
+  font-size:10px;
+
+  font-weight:600;
+
+  letter-spacing:2px;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.next:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(103,6,38,.22);
+}
+
+/* =========================
+   HINT
+========================= */
+
+.hint{
+  margin-top:15px;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  opacity:.5;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+  position:fixed;
+
+  color:rgba(255,255,255,.75);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:15px;
+
+  pointer-events:none;
+
+  animation:
+    float 5s ease-in-out infinite;
+}
+
+.heart1{
+  left:8%;
+  top:23%;
+}
+
+.heart2{
+  right:9%;
+  top:35%;
+  animation-delay:1s;
+}
+
+.heart3{
+  left:12%;
+  bottom:20%;
+  animation-delay:2s;
+}
+
+.heart4{
+  right:13%;
+  bottom:14%;
+  animation-delay:.7s;
+}
+
+/* =========================
+   FLOAT ANIMATION
+========================= */
+
+@keyframes float{
+
+  0%,100%{
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity:.4;
+  }
+
+  50%{
+    transform:
+      translateY(-13px)
+      rotate(8deg);
+
+    opacity:.9;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  .page{
+    padding:
+      45px 17px 65px;
+  }
+
+  h1{
+    font-size:35px;
+  }
+
+  .letter{
+    padding:
+      28px 22px 32px;
+
+    border-radius:18px;
+  }
+
+  .letter-text{
+    font-size:14px;
+
+    line-height:1.9;
+  }
+
+  .greeting{
+    font-size:21px;
+  }
+
+  .letter-header{
+    gap:10px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart heart1">♡</div>
+<div class="heart heart2">♡</div>
+<div class="heart heart3">♡</div>
+<div class="heart heart4">♡</div>
+
+
+<!-- MAIN PAGE -->
+
+<div class="page">
+
+
+  <!-- CHAPTER -->
+
+  <div class="chapter">
+    บทที่ 05
+  </div>
+
+
+  <!-- TITLE -->
+
+  <h1>
+    จดหมาย<br>
+    ถึงเธอ ♡
+  </h1>
+
+
+  <!-- SUBTITLE -->
+
+  <div class="subtitle">
+    บางความรู้สึก ก็อยากเขียนให้เธอได้อ่าน
+  </div>
+
+
+  <!-- LETTER -->
+
+  <div class="letter">
+
+
+    <!-- LETTER HEADER -->
+
+    <div class="letter-header">
+
+      <div class="label">
+        ถึงคนพิเศษของฉัน
+      </div>
+
+      <div class="date">
+        08.10.25
+      </div>
+
+    </div>
+
+
+    <!-- GREETING -->
+
+    <div class="greeting">
+      ถึงเธอ,
+    </div>
+
+
+    <!-- LETTER CONTENT -->
+
+    <div class="letter-text">
+
+      <p>
+        ขอบคุณที่เข้ามาเป็นส่วนหนึ่งในชีวิตของฉัน
+        และขอบคุณสำหรับทุกช่วงเวลาที่เราได้มีร่วมกัน
+        ไม่ว่าจะเป็นวันที่เราหัวเราะด้วยกัน
+        วันที่คิดถึงกัน
+        หรือแม้แต่วันที่เราไม่เข้าใจกันก็ตาม
+      </p>
+
+
+      <p>
+        ตลอดเวลาที่ผ่านมา
+        ฉันอาจจะไม่ได้เป็นคนรักที่สมบูรณ์แบบ
+        บางครั้งฉันอาจจะงอแง คิดมาก
+        หรือทำให้เธอเหนื่อย
+        แต่ทุกความรู้สึกที่ฉันมีให้เธอ
+        ล้วนเป็นความรู้สึกจริง ๆ
+      </p>
+
+
+      <p>
+        ฉันยังจำวันที่เราเริ่มต้นกันได้ดี
+        และยิ่งเวลาผ่านไป
+        ฉันก็ยิ่งรู้ว่าการมีเธออยู่ในชีวิต
+        เป็นสิ่งที่มีความหมายกับฉันมากแค่ไหน
+      </p>
+
+
+      <p>
+        ฉันไม่รู้ว่าอนาคตของเราจะเป็นอย่างไร
+        แต่สิ่งหนึ่งที่ฉันอยากให้เธอรู้คือ
+        ฉันดีใจที่ครั้งหนึ่งเราได้พบกัน
+        ได้รักกัน
+        และได้สร้างความทรงจำมากมายร่วมกัน
+      </p>
+
+
+      <p>
+        ถ้าย้อนกลับไปได้
+        ฉันก็ยังอยากเลือกพบเธออยู่ดี
+        เพราะเธอคือหนึ่งในความทรงจำที่สวยงามที่สุด
+        ที่เกิดขึ้นในชีวิตของฉัน
+      </p>
+
+
+      <p>
+        ขอบคุณที่รักฉันในวันที่ฉันอาจจะรักตัวเองได้ไม่ดีพอ
+        ขอบคุณที่อยู่ข้างกันในวันที่ดี
+        และขอบคุณสำหรับทุกอย่างที่เธอเคยทำให้ฉัน
+      </p>
+
+
+      <p>
+        ฉันหวังว่าไม่ว่าเราจะเดินไปทางไหน
+        ขอให้เธอมีความสุข
+        และได้รับความรักที่ดีเสมอ
+        และถ้าในวันหนึ่งเธอนึกถึงฉัน
+        ฉันก็หวังว่าเธอจะนึกถึงเรื่องราวของเรา
+        ด้วยรอยยิ้มเหมือนที่ฉันจะทำ
+      </p>
+
+
+    </div>
+
+
+    <!-- SIGNATURE -->
+
+    <div class="signature">
+
+      <div class="signature-small">
+        ด้วยความรัก
+      </div>
+
+      <div class="signature-name">
+        จากฉันถึงเธอ ♡
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- NEXT -->
+
+  <div class="next-area">
+
+    <a href="final.html" class="next">
+      ไปหน้าสุดท้าย ♡
+    </a>
+
+    <div class="hint">
+      ยังมีอีกหนึ่งหน้าที่อยากให้เธอเห็น
+    </div>
+
+  </div>
+
+
+</div>
+
+</body>
+</html>
