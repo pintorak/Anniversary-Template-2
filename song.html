@@ -147,4 +147,727 @@ h1 {
   box-shadow:
     0 22px 35px rgba(103,6,38,.34),
     inset 0 2px 0 rgba(255,255,255,.16),
-    inset 
+    inset 0 -8px 15px rgba(0,0,0,.14);
+}
+
+/* TOP HIGHLIGHT */
+
+.top-line {
+  position: absolute;
+
+  top: 10px;
+  left: 15px;
+  right: 15px;
+
+  height: 2px;
+
+  background: rgba(255,255,255,.17);
+
+  border-radius: 10px;
+}
+
+/* SCREWS */
+
+.screw {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #FFBDC5;
+
+  border: 1px solid #4b061b;
+
+  opacity: .8;
+}
+
+.screw-1 {
+  top: 11px;
+  left: 11px;
+}
+
+.screw-2 {
+  top: 11px;
+  right: 11px;
+}
+
+.screw-3 {
+  bottom: 11px;
+  left: 11px;
+}
+
+.screw-4 {
+  bottom: 11px;
+  right: 11px;
+}
+
+/* LABEL */
+
+.label {
+  position: absolute;
+
+  left: 9%;
+  right: 9%;
+  top: 17%;
+
+  height: 43%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdfc 0%,
+      #FDECEF 100%
+    );
+
+  border-radius: 4px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(103,6,38,.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-strip {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 8px;
+
+  background: var(--pink);
+}
+
+.label-title {
+  font-size: clamp(20px, 6vw, 27px);
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  margin-top: 5px;
+}
+
+.label-line {
+  width: 82px;
+  height: 2px;
+
+  background: var(--pink);
+
+  margin: 8px 0 6px;
+}
+
+.label-date {
+  font-family: Arial, sans-serif;
+
+  font-size: 7px;
+
+  letter-spacing: 3px;
+
+  opacity: .55;
+}
+
+/* TAPE WINDOW */
+
+.window {
+  position: absolute;
+
+  left: 18%;
+  right: 18%;
+  bottom: 11%;
+
+  height: 25%;
+
+  border-radius: 7px;
+
+  background: #3e0618;
+
+  border: 3px solid #43051a;
+
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px;
+}
+
+.tape {
+  position: absolute;
+
+  left: 30%;
+  right: 30%;
+
+  top: 50%;
+
+  height: 4px;
+
+  transform: translateY(-50%);
+
+  background: #190109;
+}
+
+/* REELS */
+
+.reel {
+  position: relative;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      #FFBDC5 0deg 18deg,
+      #670626 18deg 36deg
+    );
+
+  border: 3px solid #290310;
+
+  box-shadow:
+    inset 0 0 0 4px #670626;
+
+  z-index: 2;
+}
+
+.reel::before {
+  content: "";
+
+  position: absolute;
+
+  width: 12px;
+  height: 12px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: var(--cream);
+
+  border: 2px solid var(--claret);
+}
+
+.playing .reel {
+  animation: rotateReel 1.1s linear infinite;
+}
+
+@keyframes rotateReel {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* SONG INFO */
+
+.song-title {
+  margin: 0 0 5px;
+
+  font-size: 24px;
+
+  font-weight: 600;
+}
+
+.artist {
+  margin: 0 0 21px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 2.5px;
+
+  opacity: .5;
+}
+
+/* PLAYER */
+
+.player {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 9px 12px;
+
+  background: var(--soft);
+
+  border-radius: 50px;
+}
+
+.play-button {
+  width: 45px;
+  height: 45px;
+
+  flex: 0 0 45px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: var(--claret);
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.play-button:active {
+  transform: scale(.94);
+}
+
+.progress-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.progress {
+  width: 100%;
+  height: 5px;
+
+  background: rgba(103,6,38,.17);
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+
+  background: var(--claret);
+
+  border-radius: 10px;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 6px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 8px;
+
+  opacity: .45;
+}
+
+/* MESSAGE */
+
+.message {
+  margin-top: 21px;
+  padding-top: 17px;
+
+  border-top: 1px solid rgba(103,6,38,.12);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.note {
+  display: block;
+
+  margin-top: 7px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  opacity: .4;
+}
+
+/* NEXT BUTTON */
+
+.next {
+  display: inline-flex;
+
+  min-height: 44px;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 23px;
+
+  padding: 0 25px;
+
+  border-radius: 50px;
+
+  background: var(--claret);
+
+  color: white;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  transition: .2s ease;
+}
+
+.next:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(103,6,38,.22);
+}
+
+.hint {
+  margin-top: 12px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  opacity: .38;
+}
+
+/* FLOATING HEARTS */
+
+.heart {
+  position: fixed;
+
+  color: var(--claret);
+
+  opacity: .18;
+
+  font-size: 18px;
+
+  pointer-events: none;
+
+  animation: floatHeart 5s ease-in-out infinite;
+}
+
+.heart-1 {
+  left: 8%;
+  top: 18%;
+}
+
+.heart-2 {
+  right: 9%;
+  top: 25%;
+  animation-delay: 1s;
+}
+
+.heart-3 {
+  left: 12%;
+  bottom: 15%;
+  animation-delay: 2s;
+}
+
+.heart-4 {
+  right: 13%;
+  bottom: 18%;
+  animation-delay: 3s;
+}
+
+@keyframes floatHeart {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (max-width: 430px) {
+
+  body {
+    padding: 20px 14px;
+  }
+
+  .card {
+    padding: 24px 16px 22px;
+  }
+
+  .cassette {
+    width: 100%;
+  }
+
+  .reel {
+    width: 31px;
+    height: 31px;
+  }
+
+  .song-title {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="heart heart-1">♡</div>
+<div class="heart heart-2">♡</div>
+<div class="heart heart-3">♡</div>
+<div class="heart heart-4">♡</div>
+
+<main class="page">
+
+  <div class="chapter">
+    CHAPTER 04
+  </div>
+
+  <h1>
+    The Song That<br>
+    Feels Like Us ♡
+  </h1>
+
+  <p class="subtitle">
+    some songs just sound a little more like home
+  </p>
+
+  <section class="card">
+
+    <div class="cassette-area">
+
+      <div class="cassette" id="cassette">
+
+        <div class="top-line"></div>
+
+        <div class="screw screw-1"></div>
+        <div class="screw screw-2"></div>
+        <div class="screw screw-3"></div>
+        <div class="screw screw-4"></div>
+
+        <div class="label">
+
+          <div class="label-strip"></div>
+
+          <div class="label-title">
+            OUR SONG ♡
+          </div>
+
+          <div class="label-line"></div>
+
+          <div class="label-date">
+            SIDE A · 08.10.25
+          </div>
+
+        </div>
+
+        <div class="window">
+
+          <div class="reel"></div>
+
+          <div class="tape"></div>
+
+          <div class="reel"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <h2 class="song-title">
+      Our Little Song
+    </h2>
+
+    <p class="artist">
+      for you, always
+    </p>
+
+    <div class="player">
+
+      <button
+        type="button"
+        class="play-button"
+        id="playButton">
+        ▶
+      </button>
+
+      <div class="progress-area">
+
+        <div
+          class="progress"
+          id="progress">
+
+          <div
+            class="progress-fill"
+            id="progressFill">
+          </div>
+
+        </div>
+
+        <div class="time">
+
+          <span id="currentTime">
+            0:00
+          </span>
+
+          <span>
+            3:00
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="message">
+
+      ถ้ามีเพลงหนึ่งเพลงที่ทำให้นึกถึงเรา
+      <br>
+      ฉันคงอยากให้เพลงนั้นอยู่ตรงนี้ ♡
+
+      <span class="note">
+        press play and stay here for a little while
+      </span>
+
+    </div>
+
+  </section>
+
+  <a
+    class="next"
+    href="letter.html">
+    READ MY LETTER ♡
+  </a>
+
+  <p class="hint">
+    chapter 04 · one more thing i want to tell you
+  </p>
+
+</main>
+
+<script>
+(function () {
+
+  const button =
+    document.getElementById("playButton");
+
+  const cassette =
+    document.getElementById("cassette");
+
+  const progress =
+    document.getElementById("progress");
+
+  const fill =
+    document.getElementById("progressFill");
+
+  const current =
+    document.getElementById("currentTime");
+
+  let playing = false;
+  let seconds = 0;
+
+  const duration = 180;
+
+  function timeText(value) {
+
+    const min =
+      Math.floor(value / 60);
+
+    const sec =
+      Math.floor(value % 60)
+        .toString()
+        .padStart(2, "0");
+
+    return min + ":" + sec;
+  }
+
+  button.addEventListener("click", function () {
+
+    playing = !playing;
+
+    if (playing) {
+
+      button.textContent = "Ⅱ";
+
+      cassette.classList.add("playing");
+
+    } else {
+
+      button.textContent = "▶";
+
+      cassette.classList.remove("playing");
+
+    }
+
+  });
+
+  window.setInterval(function () {
+
+    if (!playing) {
+      return;
+    }
+
+    seconds += 1;
+
+    if (seconds >= duration) {
+      seconds = 0;
+    }
+
+    fill.style.width =
+      ((seconds / duration) * 100) + "%";
+
+    current.textContent =
+      timeText(seconds);
+
+  }, 1000);
+
+  progress.addEventListener("click", function (event) {
+
+    const box =
+      progress.getBoundingClientRect();
+
+    let ratio =
+      (event.clientX - box.left) / box.width;
+
+    ratio =
+      Math.max(0, Math.min(1, ratio));
+
+    seconds =
+      Math.round(ratio * duration);
+
+    fill.style.width =
+      (ratio * 100) + "%";
+
+    current.textContent =
+      timeText(seconds);
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
