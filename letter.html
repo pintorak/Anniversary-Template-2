@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>My Letter ♡</title>
+<title>จดหมายถึงเธอ ♡</title>
 
 <style>
+
 :root{
   --claret:#670626;
   --pink:#FFBDC5;
@@ -43,10 +44,15 @@ body{
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
+    "Noto Sans Thai",
     sans-serif;
 
   overflow-x:hidden;
 }
+
+/* =========================
+   PAGE
+========================= */
 
 .page{
   width:100%;
@@ -54,6 +60,10 @@ body{
   margin:0 auto;
   padding:55px 20px 80px;
 }
+
+/* =========================
+   CHAPTER
+========================= */
 
 .chapter{
   text-align:center;
@@ -63,239 +73,73 @@ body{
   margin-bottom:18px;
 }
 
+/* =========================
+   TITLE
+========================= */
+
 h1{
   text-align:center;
-  font-family:Georgia, "Times New Roman", serif;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
   font-size:42px;
   line-height:1.05;
   font-weight:500;
   letter-spacing:-1px;
 }
 
+/* =========================
+   SUBTITLE
+========================= */
+
 .subtitle{
   text-align:center;
+
   margin-top:15px;
+
   font-size:12px;
   line-height:1.8;
   letter-spacing:.5px;
+
   opacity:.72;
 }
 
+/* =========================
+   LETTER CARD
+========================= */
+
 .letter{
   position:relative;
+
   margin-top:38px;
+
   background:var(--cream);
+
   border-radius:20px;
+
   padding:32px 28px 35px;
-  box-shadow:0 18px 45px rgba(103,6,38,.15);
+
+  box-shadow:
+    0 18px 45px rgba(103,6,38,.15);
+
   overflow:hidden;
 }
 
+/* small heart */
+
 .letter::before{
   content:"♡";
+
   position:absolute;
+
   right:24px;
   top:20px;
-  font-family:Georgia,serif;
-  font-size:18px;
-  opacity:.25;
-}
 
-.letter::after{
-  content:"";
-  position:absolute;
-  width:120px;
-  height:120px;
-  right:-60px;
-  top:-60px;
-  border-radius:50%;
-  background:var(--soft);
-}
-
-.letter-header{
-  position:relative;
-  z-index:2;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-bottom:20px;
-  margin-bottom:28px;
-  border-bottom:1px solid rgba(103,6,38,.12);
-}
-
-.label{
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:3px;
-}
-
-.date{
-  font-size:9px;
-  letter-spacing:1px;
-  opacity:.5;
-}
-
-.greeting{
-  position:relative;
-  z-index:2;
-  font-family:Georgia, "Times New Roman", serif;
-  font-size:24px;
-  margin-bottom:24px;
-}
-
-.letter-text{
-  position:relative;
-  z-index:2;
   font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+    Georgia,
+    serif;
 
-  color:#542b38;
-  font-size:15px;
-  line-height:2;
-}
-
-.letter-text p{
-  margin-bottom:21px;
-}
-
-.letter-text p:last-child{
-  margin-bottom:0;
-}
-
-.signature{
-  position:relative;
-  z-index:2;
-  margin-top:32px;
-  padding-top:23px;
-  border-top:1px solid rgba(103,6,38,.1);
-  text-align:right;
-}
-
-.signature-small{
-  font-size:9px;
-  letter-spacing:2px;
-  opacity:.5;
-  margin-bottom:7px;
-}
-
-.signature-name{
-  font-family:Georgia, "Times New Roman", serif;
-  font-size:21px;
-  font-style:italic;
-}
-
-.next-area{
-  text-align:center;
-  margin-top:30px;
-}
-
-.next{
-  display:inline-block;
-  background:var(--claret);
-  color:#fff;
-  text-decoration:none;
-  padding:14px 25px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:2px;
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
-}
-
-.next:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(103,6,38,.22);
-}
-
-.hint{
-  margin-top:15px;
-  font-size:9px;
-  letter-spacing:2px;
-  opacity:.5;
-}
-
-.heart{
-  position:fixed;
-  color:rgba(255,255,255,.75);
-  font-family:Georgia,serif;
-  font-size:15px;
-  pointer-events:none;
-  animation:float 5s ease-in-out infinite;
-}
-
-.heart1{
-  left:8%;
-  top:23%;
-}
-
-.heart2{
-  right:9%;
-  top:35%;
-  animation-delay:1s;
-}
-
-.heart3{
-  left:12%;
-  bottom:20%;
-  animation-delay:2s;
-}
-
-.heart4{
-  right:13%;
-  bottom:14%;
-  animation-delay:.7s;
-}
-
-@keyframes float{
-  0%,100%{
-    transform:translateY(0) rotate(0deg);
-    opacity:.4;
-  }
-
-  50%{
-    transform:translateY(-13px) rotate(8deg);
-    opacity:.9;
-  }
-}
-
-@media(max-width:480px){
-
-  .page{
-    padding:45px 17px 65px;
-  }
-
-  h1{
-    font-size:35px;
-  }
-
-  .letter{
-    padding:28px 22px 32px;
-    border-radius:18px;
-  }
-
-  .letter-text{
-    font-size:14px;
-    line-height:1.9;
-  }
-
-  .greeting{
-    font-size:21px;
-  }
-
-  .letter-header{
-    gap:10px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="heart heart1">♡</div>
-<div class="heart heart2">♡</div>
-<div class="heart heart3">♡</
+  font-size:18
