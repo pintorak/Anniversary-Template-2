@@ -1,242 +1,138 @@
-/* ==========================================
-   ANNIVERSARY TEMPLATE 2
-   PASSCODE SYSTEM
-========================================== */
-
-
-/* ==========================================
-   ตั้งรหัสผ่านตรงนี้
-========================================== */
-
+```javascript
 const CORRECT_PASSCODE = "081025";
 
-
-/* ==========================================
-   ELEMENTS
-========================================== */
+let enteredCode = "";
 
 const numberButtons =
-  document.querySelectorAll(".number-btn");
+  document.querySelectorAll("[data-number]");
+
+const dots =
+  document.querySelectorAll(".pin-dots span");
 
 const deleteBtn =
   document.getElementById("deleteBtn");
 
-const dots =
-  document.querySelectorAll(".passcode-dots span");
+const clearBtn =
+  document.getElementById("clearBtn");
 
 const errorMessage =
   document.getElementById("errorMessage");
 
-const phone =
-  document.querySelector(".phone");
-
-const currentTime =
-  document.getElementById("currentTime");
+const pinCard =
+  document.querySelector(".pin-card");
 
 
-/* ==========================================
-   VARIABLES
-========================================== */
-
-let enteredCode = "";
-
-
-/* ==========================================
-   CLOCK
-========================================== */
-
-function updateClock() {
-
-  const now = new Date();
-
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-
-  hours = String(hours).padStart(2, "0");
-  minutes = String(minutes).padStart(2, "0");
-
-  currentTime.textContent =
-    `${hours}:${minutes}`;
-}
-
-updateClock();
-
-setInterval(updateClock, 1000);
-
-
-/* ==========================================
-   UPDATE PASSCODE DOTS
-========================================== */
+/* =========================
+   UPDATE PIN DISPLAY
+========================= */
 
 function updateDots() {
 
   dots.forEach((dot, index) => {
 
     if (index < enteredCode.length) {
-
       dot.classList.add("active");
-
     } else {
-
       dot.classList.remove("active");
-
     }
 
   });
-
 }
 
 
-/* ==========================================
+/* =========================
    ADD NUMBER
-========================================== */
+========================= */
 
 function addNumber(number) {
-
-  /*
-   * จำกัดรหัสไว้ 6 ตัว
-   */
 
   if (enteredCode.length >= 6) {
     return;
   }
 
-
   enteredCode += number;
+
+  errorMessage.textContent = "";
 
   updateDots();
 
-  errorMessage.classList.remove("show");
-
-
-  /*
-   * เมื่อครบ 6 ตัว
-   * ตรวจรหัสอัตโนมัติ
-   */
-
   if (enteredCode.length === 6) {
-
-    setTimeout(() => {
-
-      checkPasscode();
-
-    }, 180);
-
+    checkPasscode();
   }
-
 }
 
 
-/* ==========================================
-   DELETE NUMBER
-========================================== */
+/* =========================
+   DELETE ONE
+========================= */
 
 function deleteNumber() {
-
-  if (enteredCode.length === 0) {
-    return;
-  }
 
   enteredCode =
     enteredCode.slice(0, -1);
 
+  errorMessage.textContent = "";
+
   updateDots();
-
-  errorMessage.classList.remove("show");
-
 }
 
 
-/* ==========================================
-   CHECK PASSCODE
-========================================== */
+/* =========================
+   CLEAR ALL
+========================= */
+
+function clearCode() {
+
+  enteredCode = "";
+
+  errorMessage.textContent = "";
+
+  updateDots();
+}
+
+
+/* =========================
+   CHECK PASSWORD
+========================= */
 
 function checkPasscode() {
 
   if (enteredCode === CORRECT_PASSCODE) {
 
-    /*
-     * รหัสถูก
-     */
-
-    dots.forEach(dot => {
-
-      dot.classList.add("active");
-
-    });
-
-
-    /*
-     * ไปหน้า story
-     */
+    errorMessage.textContent =
+      "♡ welcome back ♡";
 
     setTimeout(() => {
-
-      window.location.href =
-        "story.html";
-
-    }, 350);
+      window.location.href = "story.html";
+    }, 500);
 
   } else {
 
-    /*
-     * รหัสผิด
-     */
+    errorMessage.textContent =
+      "รหัสไม่ถูกต้อง ลองใหม่อีกครั้ง ♡";
 
-    showWrongPassword();
+    pinCard.classList.remove("shake");
 
+    void pinCard.offsetWidth;
+
+    pinCard.classList.add("shake");
+
+    setTimeout(() => {
+
+      enteredCode = "";
+
+      updateDots();
+
+      pinCard.classList.remove("shake");
+
+    }, 650);
   }
-
 }
 
 
-/* ==========================================
-   WRONG PASSWORD
-========================================== */
-
-function showWrongPassword() {
-
-  /*
-   * รีเซ็ต animation
-   */
-
-  phone.classList.remove("shake");
-
-  void phone.offsetWidth;
-
-  phone.classList.add("shake");
-
-
-  /*
-   * แสดงข้อความ
-   */
-
-  errorMessage.classList.add("show");
-
-
-  /*
-   * ล้างรหัส
-   */
-
-  enteredCode = "";
-
-
-  /*
-   * อัปเดตจุด
-   */
-
-  setTimeout(() => {
-
-    updateDots();
-
-  }, 200);
-
-}
-
-
-/* ==========================================
-   NUMBER BUTTONS
-========================================== */
+/* =========================
+   NUMBER BUTTON EVENTS
+========================= */
 
 numberButtons.forEach(button => {
 
@@ -252,9 +148,9 @@ numberButtons.forEach(button => {
 });
 
 
-/* ==========================================
-   DELETE BUTTON
-========================================== */
+/* =========================
+   DELETE
+========================= */
 
 deleteBtn.addEventListener(
   "click",
@@ -262,28 +158,29 @@ deleteBtn.addEventListener(
 );
 
 
-/* ==========================================
-   KEYBOARD SUPPORT
-========================================== */
+/* =========================
+   CLEAR
+========================= */
+
+clearBtn.addEventListener(
+  "click",
+  clearCode
+);
+
+
+/* =========================
+   KEYBOARD
+========================= */
 
 document.addEventListener(
   "keydown",
-  (event) => {
-
-    /*
-     * กดตัวเลขจากคีย์บอร์ด
-     */
+  event => {
 
     if (/^[0-9]$/.test(event.key)) {
 
       addNumber(event.key);
 
     }
-
-
-    /*
-     * กด Backspace เพื่อลบ
-     */
 
     if (
       event.key === "Backspace" ||
@@ -294,5 +191,19 @@ document.addEventListener(
 
     }
 
+    if (event.key === "Escape") {
+
+      clearCode();
+
+    }
+
   }
 );
+
+
+/* =========================
+   INITIAL
+========================= */
+
+updateDots();
+```
