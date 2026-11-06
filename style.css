@@ -1,10 +1,11 @@
-:root {
+\:root {
   --claret: #670626;
   --pink: #FFBDC5;
   --cream: #FFF9F8;
   --white: #FFFFFF;
   --dark: #2B1B20;
   --soft-pink: #FDECEF;
+  --muted: #80646c;
 }
 
 * {
@@ -13,14 +14,33 @@
   padding: 0;
 }
 
-html,
-body {
-  width: 100%;
-  min-height: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Inter", sans-serif;
+  color: var(--dark);
+  background: var(--cream);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* ==================================================
+   INDEX — PHONE
+================================================== */
+
+body:not(.story-page) {
+  width: 100%;
+  min-height: 100vh;
 
   background:
     radial-gradient(
@@ -35,10 +55,6 @@ body {
   overflow-x: hidden;
 }
 
-button {
-  font-family: inherit;
-}
-
 .page {
   width: 100%;
   min-height: 100vh;
@@ -50,11 +66,6 @@ button {
 
   padding: 30px 20px;
 }
-
-
-/* ==========================================
-   PHONE
-========================================== */
 
 .phone {
   position: relative;
@@ -83,12 +94,6 @@ button {
     0 10px 30px rgba(55, 10, 25, 0.20);
 }
 
-
-/* ==========================================
-   TEMPORARY WALLPAPER
-   ยังไม่มีรูปคู่ จึงใช้พื้นหลังสีแดงไว้ก่อน
-========================================== */
-
 .wallpaper {
   position: absolute;
   inset: 0;
@@ -99,7 +104,6 @@ button {
       rgba(255, 189, 197, 0.35) 0%,
       transparent 35%
     ),
-
     linear-gradient(
       145deg,
       #8c2449 0%,
@@ -109,11 +113,6 @@ button {
 
   transform: scale(1.01);
 }
-
-
-/* ==========================================
-   DARK OVERLAY
-========================================== */
 
 .screen-overlay {
   position: absolute;
@@ -129,11 +128,6 @@ button {
     );
 }
 
-
-/* ==========================================
-   STATUS BAR
-========================================== */
-
 .status-bar {
   position: absolute;
 
@@ -144,14 +138,12 @@ button {
   z-index: 5;
 
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 
   padding: 0 25px;
 
   font-size: 12px;
-
   font-weight: 500;
 
   color: rgba(255, 255, 255, 0.95);
@@ -159,20 +151,12 @@ button {
 
 .status-icons {
   display: flex;
-
   align-items: center;
-
   gap: 8px;
 
   font-size: 10px;
-
   opacity: 0.9;
 }
-
-
-/* ==========================================
-   CONTENT
-========================================== */
 
 .content {
   position: relative;
@@ -187,11 +171,6 @@ button {
   padding-top: 95px;
 }
 
-
-/* ==========================================
-   HEART
-========================================== */
-
 .heart-icon {
   width: 44px;
   height: 44px;
@@ -203,7 +182,6 @@ button {
   border-radius: 50%;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -212,17 +190,10 @@ button {
 
   backdrop-filter: blur(12px);
 
-  -webkit-backdrop-filter: blur(12px);
-
   color: var(--pink);
 
   font-size: 18px;
 }
-
-
-/* ==========================================
-   TITLES
-========================================== */
 
 .eyebrow {
   margin-bottom: 9px;
@@ -236,7 +207,7 @@ button {
   font-weight: 500;
 }
 
-h1 {
+body:not(.story-page) h1 {
   font-family: "Cormorant Garamond", serif;
 
   font-size: 36px;
@@ -255,20 +226,13 @@ h1 {
 
   letter-spacing: 1px;
 
-  color:
-    rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.72);
 }
-
-
-/* ==========================================
-   PASSCODE DOTS
-========================================== */
 
 .passcode-dots {
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
   gap: 13px;
@@ -284,8 +248,7 @@ h1 {
 
   border-radius: 50%;
 
-  border: 1px solid
-    rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.85);
 
   background: transparent;
 
@@ -303,14 +266,8 @@ h1 {
   transform: scale(1.2);
 
   box-shadow:
-    0 0 12px
-    rgba(255, 189, 197, 0.75);
+    0 0 12px rgba(255, 189, 197, 0.75);
 }
-
-
-/* ==========================================
-   ERROR
-========================================== */
 
 .error-message {
   height: 17px;
@@ -330,11 +287,6 @@ h1 {
   opacity: 1;
 }
 
-
-/* ==========================================
-   KEYPAD
-========================================== */
-
 .keypad {
   width: 255px;
 
@@ -342,8 +294,7 @@ h1 {
 
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 13px 17px;
 }
@@ -363,8 +314,6 @@ h1 {
     rgba(255, 255, 255, 0.15);
 
   backdrop-filter: blur(14px);
-
-  -webkit-backdrop-filter: blur(14px);
 
   cursor: pointer;
 
@@ -396,7 +345,6 @@ h1 {
 
 .number-btn span {
   font-size: 24px;
-
   font-weight: 400;
 
   line-height: 20px;
@@ -421,11 +369,6 @@ h1 {
   height: 62px;
 }
 
-
-/* ==========================================
-   HINT
-========================================== */
-
 .hint {
   position: absolute;
 
@@ -440,8 +383,7 @@ h1 {
 
   margin-bottom: 5px;
 
-  color:
-    rgba(255, 189, 197, 0.85);
+  color: rgba(255, 189, 197, 0.85);
 
   font-size: 8px;
 
@@ -453,14 +395,8 @@ h1 {
 
   font-size: 17px;
 
-  color:
-    rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.92);
 }
-
-
-/* ==========================================
-   SHAKE
-========================================== */
 
 .phone.shake {
   animation: shake 0.35s ease;
@@ -495,39 +431,374 @@ h1 {
 }
 
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
+/* ==================================================
+   STORY PAGE
+================================================== */
 
-@media (max-height: 760px) {
+.story-page {
+  background: var(--cream);
 
-  .phone {
-    height: 94vh;
+  color: var(--dark);
 
-    min-height: 610px;
+  overflow-x: hidden;
+}
+
+.story-wrapper {
+  width: min(100%, 1100px);
+
+  margin: 0 auto;
+
+  padding: 80px 28px 100px;
+}
+
+
+/* ==================================================
+   STORY HEADER
+================================================== */
+
+.story-header {
+  max-width: 650px;
+
+  margin: 0 auto 90px;
+
+  text-align: center;
+}
+
+.story-header .eyebrow {
+  color: var(--claret);
+
+  margin-bottom: 12px;
+}
+
+.story-header h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  color: var(--claret);
+
+  font-size: clamp(56px, 9vw, 88px);
+
+  line-height: 0.9;
+
+  font-weight: 500;
+}
+
+.story-intro {
+  margin-top: 24px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 2;
+}
+
+
+/* ==================================================
+   STORY CARDS
+================================================== */
+
+.story-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 120px;
+}
+
+.story-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 1fr)
+    minmax(300px, 1fr);
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+.story-card.reverse {
+  grid-template-columns:
+    minmax(300px, 1fr)
+    minmax(300px, 1fr);
+}
+
+.story-card.reverse .story-photo {
+  order: 2;
+}
+
+.story-card.reverse .story-text {
+  order: 1;
+}
+
+
+/* ==================================================
+   NUMBER
+================================================== */
+
+.story-number {
+  position: absolute;
+
+  top: -25px;
+
+  left: -15px;
+
+  z-index: 3;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 80px;
+
+  line-height: 1;
+
+  color: rgba(103, 6, 38, 0.09);
+
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   PHOTO PLACEHOLDER
+================================================== */
+
+.story-photo {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  border-radius: 2px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7dce1 0%,
+      #e8bcc5 50%,
+      #d59ba8 100%
+    );
+
+  box-shadow:
+    0 25px 55px rgba(103, 6, 38, 0.13);
+}
+
+.story-photo::after {
+  content: "PHOTO";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  color: rgba(103, 6, 38, 0.35);
+
+  font-size: 9px;
+
+  letter-spacing: 4px;
+}
+
+
+/* ==================================================
+   STORY TEXT
+================================================== */
+
+.story-text {
+  max-width: 420px;
+}
+
+.story-label {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: var(--claret);
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  font-weight: 600;
+}
+
+.story-text h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  color: var(--claret);
+
+  font-size: clamp(36px, 5vw, 54px);
+
+  line-height: 0.95;
+
+  font-weight: 500;
+
+  margin-bottom: 22px;
+}
+
+.story-text p {
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 2;
+
+  max-width: 390px;
+}
+
+
+/* ==================================================
+   END
+================================================== */
+
+.story-end {
+  text-align: center;
+
+  margin-top: 140px;
+}
+
+.small-heart {
+  color: var(--claret);
+
+  font-size: 26px;
+
+  margin-bottom: 14px;
+}
+
+.story-end p {
+  font-family: "Cormorant Garamond", serif;
+
+  color: var(--muted);
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  margin-bottom: 30px;
+}
+
+
+/* ==================================================
+   NEXT BUTTON
+================================================== */
+
+.next-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  min-width: 170px;
+
+  padding: 15px 24px;
+
+  border: 1px solid var(--claret);
+
+  color: var(--claret);
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.next-button span {
+  font-size: 17px;
+
+  line-height: 0;
+}
+
+.next-button:hover {
+  background: var(--claret);
+
+  color: var(--white);
+
+  transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+  .story-wrapper {
+    padding:
+      55px 22px 80px;
   }
 
-  .content {
-    padding-top: 80px;
+  .story-header {
+    margin-bottom: 65px;
   }
 
-  .passcode-dots {
-    margin-top: 20px;
+  .story-header h1 {
+    font-size: 64px;
   }
 
-  .keypad {
-    gap: 9px 15px;
+  .story-list {
+    gap: 85px;
   }
 
-  .number-btn,
-  .delete-btn,
-  .empty-key {
-    width: 67px;
-    height: 56px;
+  .story-card,
+  .story-card.reverse {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+  }
+
+  .story-card.reverse .story-photo,
+  .story-card.reverse .story-text {
+    order: initial;
+  }
+
+  .story-photo {
+    aspect-ratio: 4 / 5;
+  }
+
+  .story-number {
+    top: -18px;
+
+    left: -4px;
+
+    font-size: 65px;
+  }
+
+  .story-text {
+    max-width: none;
+  }
+
+  .story-text h2 {
+    font-size: 43px;
+  }
+
+  .story-text p {
+    font-size: 12px;
+  }
+
+  .story-end {
+    margin-top: 100px;
   }
 
 }
 
+
+/* ==================================================
+   SMALL PHONE
+================================================== */
 
 @media (max-width: 400px) {
 
@@ -537,6 +808,7 @@ h1 {
 
   .phone {
     width: 100vw;
+
     height: 100dvh;
 
     min-height: 100dvh;
