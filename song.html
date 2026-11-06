@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>The Song That Feels Like Us ♡</title>
+  <title>Our Song ♡</title>
 
   <style>
+    :root {
+      --claret: #670626;
+      --pink: #FFBDC5;
+      --cream: #FFF9F8;
+      --soft: #FDECEF;
+      --white: #FFFFFF;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,16 +22,22 @@
 
     body {
       min-height: 100vh;
-      font-family: Georgia, "Times New Roman", serif;
-      color: #670626;
+      overflow-x: hidden;
 
-      background:
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      color: var(--claret);
+
+      background-color: var(--pink);
+
+      background-image:
         radial-gradient(
-          circle,
-          rgba(255,255,255,.55) 1.5px,
-          transparent 1.5px
-        ),
-        #FFBDC5;
+          rgba(255,255,255,.62) 1.4px,
+          transparent 1.4px
+        );
 
       background-size: 34px 34px;
 
@@ -32,218 +45,76 @@
       justify-content: center;
       align-items: center;
 
-      padding: 25px;
-      overflow-x: hidden;
+      padding: 28px 18px;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     .page {
-      width: 100%;
-      max-width: 520px;
+      width: min(100%, 520px);
       text-align: center;
       position: relative;
     }
 
     .chapter {
       font-family: Arial, sans-serif;
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 700;
       letter-spacing: 4px;
-      font-weight: bold;
-      opacity: .75;
       margin-bottom: 10px;
+      opacity: .68;
     }
 
     h1 {
-      font-size: clamp(30px, 8vw, 46px);
-      line-height: 1;
-      margin-bottom: 10px;
+      font-size: clamp(31px, 9vw, 48px);
+      line-height: .98;
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
     }
 
     .subtitle {
       font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 1.4px;
-      opacity: .7;
-      margin-bottom: 27px;
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: lowercase;
+      opacity: .58;
+      margin-bottom: 26px;
     }
 
-    .music-card {
+    /* CARD */
+
+    .main-card {
       width: 100%;
-      background: rgba(255, 249, 248, .96);
+      background: rgba(255,249,248,.97);
       border-radius: 30px;
-
-      padding: 28px 24px 25px;
-
+      padding: 30px 25px 25px;
       box-shadow:
-        0 20px 50px rgba(103, 6, 38, .18);
-
-      border: 1px solid rgba(103, 6, 38, .08);
+        0 20px 55px rgba(103,6,38,.18);
+      border: 1px solid rgba(103,6,38,.08);
     }
 
     /* CASSETTE */
 
-    .cassette-area {
+    .cassette-wrap {
+      width: 100%;
       display: flex;
       justify-content: center;
-      margin: 4px 0 25px;
+      padding: 5px 0 27px;
     }
 
     .cassette {
-      width: 315px;
-      max-width: 100%;
-      height: 190px;
-
+      width: min(340px, 100%);
+      aspect-ratio: 1.7 / 1;
       position: relative;
+
+      border-radius: 15px;
 
       background:
         linear-gradient(
-          135deg,
-          #7d183c 0%,
-          #670626 45%,
-          #52051e 100%
-        );
-
-      border-radius: 17px;
-
-      box-shadow:
-        0 16px 28px rgba(103, 6, 38, .32),
-        inset 0 2px 0 rgba(255,255,255,.18),
-        inset 0 -5px 10px rgba(0,0,0,.18);
-
-      border: 3px solid #4d061d;
-
-      transform: rotate(-2deg);
-
-      transition: transform .35s ease;
-    }
-
-    .cassette.playing {
-      transform: rotate(0deg) translateY(-3px);
-    }
-
-    /* top shine */
-
-    .cassette::before {
-      content: "";
-      position: absolute;
-
-      left: 16px;
-      right: 16px;
-      top: 12px;
-
-      height: 3px;
-
-      background: rgba(255,255,255,.25);
-      border-radius: 10px;
-    }
-
-    /* label */
-
-    .label {
-      position: absolute;
-
-      left: 27px;
-      right: 27px;
-      top: 30px;
-
-      height: 83px;
-
-      background: #FFF9F8;
-
-      border-radius: 5px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      color: #670626;
-
-      box-shadow:
-        inset 0 0 0 1px rgba(103,6,38,.1);
-    }
-
-    .label-title {
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .label-small {
-      margin-top: 6px;
-
-      font-family: Arial, sans-serif;
-      font-size: 8px;
-      letter-spacing: 3px;
-
-      opacity: .6;
-    }
-
-    .label-line {
-      width: 100px;
-      height: 2px;
-
-      background: #FFBDC5;
-
-      margin-top: 9px;
-    }
-
-    /* tape window */
-
-    .tape-window {
-      position: absolute;
-
-      left: 75px;
-      right: 75px;
-      bottom: 25px;
-
-      height: 40px;
-
-      background: #FDECEF;
-
-      border-radius: 7px;
-
-      border: 3px solid #4d061d;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 12px;
-    }
-
-    .reel {
-      width: 34px;
-      height: 34px;
-
-      border-radius: 50%;
-
-      background:
-        repeating-conic-gradient(
-          from 0deg,
-          #670626 0deg 12deg,
-          #FFBDC5 12deg 24deg
-        );
-
-      border: 3px solid #670626;
-
-      position: relative;
-
-      transition: transform .5s linear;
-    }
-
-    .reel::after {
-      content: "";
-
-      position: absolute;
-
-      width: 9px;
-      height: 9px;
-
-      background: #FFF9F8;
-
-      border: 2px solid #670626;
-
-      border-radius: 50%;
-
-      left: 50%;
-      top: 50
+          145deg,
+          #7c173b 0%,
+          #670626 48%
