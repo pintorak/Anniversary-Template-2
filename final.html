@@ -1,164 +1,575 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Final Surprise | Our Anniversary</title>
+<title>For You ♡</title>
 
-  <link rel="stylesheet" href="style.css">
+<style>
+
+:root{
+  --claret:#670626;
+  --pink:#FFBDC5;
+  --cream:#FFF9F8;
+  --soft:#FDECEF;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+
+  background-color:var(--pink);
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.55) 1.4px,
+      transparent 1.5px
+    );
+
+  background-size:34px 34px;
+
+  color:var(--claret);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans Thai",
+    sans-serif;
+
+  overflow-x:hidden;
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+  position:fixed;
+
+  color:rgba(255,255,255,.75);
+
+  font-family:Georgia,serif;
+
+  font-size:15px;
+
+  pointer-events:none;
+
+  animation:
+    float 5s ease-in-out infinite;
+}
+
+.heart1{
+  left:8%;
+  top:22%;
+}
+
+.heart2{
+  right:10%;
+  top:31%;
+  animation-delay:1s;
+}
+
+.heart3{
+  left:13%;
+  bottom:20%;
+  animation-delay:2s;
+}
+
+.heart4{
+  right:12%;
+  bottom:14%;
+  animation-delay:.7s;
+}
+
+@keyframes float{
+
+  0%,100%{
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity:.35;
+  }
+
+  50%{
+    transform:
+      translateY(-13px)
+      rotate(8deg);
+
+    opacity:.9;
+  }
+
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+  width:100%;
+  max-width:520px;
+
+  min-height:100vh;
+
+  margin:0 auto;
+
+  padding:
+    58px 20px 75px;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+
+  text-align:center;
+}
+
+
+/* =========================
+   CHAPTER
+========================= */
+
+.chapter{
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:4px;
+
+  margin-bottom:20px;
+}
+
+
+/* =========================
+   MAIN TITLE
+========================= */
+
+h1{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:43px;
+
+  line-height:1.05;
+
+  font-weight:500;
+
+  letter-spacing:-1px;
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle{
+  margin-top:17px;
+
+  max-width:360px;
+
+  font-size:12px;
+
+  line-height:1.9;
+
+  letter-spacing:.4px;
+
+  opacity:.72;
+}
+
+
+/* =========================
+   FINAL CARD
+========================= */
+
+.final-card{
+  position:relative;
+
+  width:100%;
+
+  margin-top:40px;
+
+  background:var(--cream);
+
+  border-radius:22px;
+
+  padding:
+    42px 30px 38px;
+
+  box-shadow:
+    0 18px 50px rgba(103,6,38,.16);
+
+  overflow:hidden;
+}
+
+
+/* decorative circle */
+
+.final-card::before{
+  content:"";
+
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  left:-100px;
+  top:-100px;
+
+  border-radius:50%;
+
+  background:var(--soft);
+}
+
+
+/* decorative circle */
+
+.final-card::after{
+  content:"♡";
+
+  position:absolute;
+
+  right:25px;
+  top:23px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:20px;
+
+  opacity:.25;
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.big-heart{
+  position:relative;
+  z-index:2;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:38px;
+
+  line-height:1;
+
+  margin-bottom:25px;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+  position:relative;
+  z-index:2;
+
+  color:#542b38;
+
+  font-size:15px;
+
+  line-height:2;
+
+  text-align:center;
+}
+
+.message p{
+  margin-bottom:21px;
+}
+
+.message p:last-child{
+  margin-bottom:0;
+}
+
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing{
+  position:relative;
+  z-index:2;
+
+  margin-top:32px;
+
+  padding-top:25px;
+
+  border-top:
+    1px solid rgba(103,6,38,.1);
+}
+
+.closing-small{
+  font-size:9px;
+
+  letter-spacing:3px;
+
+  opacity:.5;
+
+  margin-bottom:9px;
+}
+
+.closing-name{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:23px;
+
+  font-style:italic;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.back-area{
+  margin-top:30px;
+}
+
+.back{
+  display:inline-block;
+
+  background:var(--claret);
+
+  color:#fff;
+
+  text-decoration:none;
+
+  padding:
+    14px 26px;
+
+  border-radius:999px;
+
+  font-size:10px;
+
+  font-weight:600;
+
+  letter-spacing:2px;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.back:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(103,6,38,.22);
+}
+
+
+/* =========================
+   BOTTOM TEXT
+========================= */
+
+.bottom-text{
+  margin-top:15px;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  opacity:.5;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  .page{
+    padding:
+      48px 17px 60px;
+  }
+
+  h1{
+    font-size:36px;
+  }
+
+  .subtitle{
+    font-size:11px;
+  }
+
+  .final-card{
+    padding:
+      35px 22px 32px;
+
+    border-radius:19px;
+  }
+
+  .message{
+    font-size:14px;
+
+    line-height:1.9;
+  }
+
+  .closing-name{
+    font-size:21px;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <main class="story-page final-page">
 
-    <div class="story-inner">
+<!-- FLOATING HEARTS -->
 
-      <div class="story-header">
+<div class="heart heart1">♡</div>
+<div class="heart heart2">♡</div>
+<div class="heart heart3">♡</div>
+<div class="heart heart4">♡</div>
 
-        <div class="chapter-label">
-          FINAL CHAPTER
-        </div>
 
-        <h1 class="story-title">
-          Final Surprise
-        </h1>
+<!-- MAIN PAGE -->
 
-        <p class="story-intro">
-          และนี่คือสิ่งสุดท้ายที่เราอยากให้เธอรู้ ♡
-        </p>
+<div class="page">
 
+
+  <!-- CHAPTER -->
+
+  <div class="chapter">
+    CHAPTER 06
+  </div>
+
+
+  <!-- TITLE -->
+
+  <h1>
+    For You<br>
+    Always ♡
+  </h1>
+
+
+  <!-- SUBTITLE -->
+
+  <div class="subtitle">
+    และนี่คือสิ่งสุดท้ายที่ฉันอยากบอกกับเธอ
+  </div>
+
+
+  <!-- FINAL CARD -->
+
+  <div class="final-card">
+
+
+    <!-- HEART -->
+
+    <div class="big-heart">
+      ♡
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div class="message">
+
+      <p>
+        ถ้าเธออ่านมาถึงตรงนี้
+        ฉันอยากให้เธอรู้ว่า
+        ทุกหน้าที่เธอเปิดมา
+        ทุกข้อความที่เธออ่าน
+        และทุกความทรงจำที่อยู่ในเว็บนี้
+        ล้วนทำขึ้นมาเพราะเธอ
+      </p>
+
+
+      <p>
+        ขอบคุณสำหรับเรื่องราวทั้งหมดของเรา
+        ขอบคุณสำหรับรอยยิ้ม
+        เสียงหัวเราะ
+        ความทรงจำ
+        และแม้แต่ช่วงเวลาที่ไม่ง่ายเลย
+      </p>
+
+
+      <p>
+        ไม่ว่าต่อจากนี้จะเกิดอะไรขึ้น
+        ฉันจะยังเก็บช่วงเวลาที่เราเคยมี
+        ไว้เป็นส่วนหนึ่งของหัวใจเสมอ
+      </p>
+
+
+      <p>
+        และถ้ามีสิ่งหนึ่งที่ฉันอยากให้เธอจำได้
+        ก็ขอให้เป็นความจริงง่าย ๆ ว่า
+        ครั้งหนึ่งมีคนคนหนึ่ง
+        ที่รักเธอมากจริง ๆ
+      </p>
+
+
+      <p>
+        ขอบคุณที่เป็นเธอ
+        และขอบคุณที่ครั้งหนึ่ง
+        เราได้เป็น “เรา”
+      </p>
+
+    </div>
+
+
+    <!-- CLOSING -->
+
+    <div class="closing">
+
+      <div class="closing-small">
+        WITH LOVE
       </div>
 
-
-      <!-- NIGHT SKY -->
-      <section class="final-hero">
-
-        <div class="stars">
-          <span>✦</span>
-          <span>·</span>
-          <span>✧</span>
-          <span>·</span>
-          <span>✦</span>
-          <span>·</span>
-          <span>✧</span>
-          <span>✦</span>
-        </div>
-
-
-        <div class="moon">
-          <span>♡</span>
-        </div>
-
-
-        <div class="final-content">
-
-          <span class="final-small">
-            AFTER EVERYTHING
-          </span>
-
-          <h2>
-            I would still
-            <br>
-            choose you.
-          </h2>
-
-          <p>
-            ในทุก ๆ เรื่องราวที่เกิดขึ้น
-            <br>
-            ขอบคุณที่ครั้งหนึ่งเราได้เลือกกัน
-          </p>
-
-        </div>
-
-      </section>
-
-
-      <!-- FINAL MESSAGE -->
-      <section class="final-message">
-
-        <div class="final-number">
-          01
-        </div>
-
-        <h2>
-          Our story<br>
-          isn't over.
-        </h2>
-
-        <p>
-          วันนี้อาจเป็นเพียงอีกหนึ่งหน้า
-          ในเรื่องราวของเรา
-        </p>
-
-        <p>
-          แต่ตราบใดที่เรายังเลือกที่จะรัก
-          ยังเลือกที่จะเข้าใจกัน
-          และยังเลือกที่จะเดินไปด้วยกัน
-          เรื่องราวของเราก็ยังเขียนต่อได้เสมอ
-        </p>
-
-
-        <div class="final-love">
-
-          <span>
-            I LOVE YOU
-          </span>
-
-          <strong>
-            ♡
-          </strong>
-
-          <span>
-            ALWAYS
-          </span>
-
-        </div>
-
-      </section>
-
-
-      <!-- FINAL BUTTON -->
-      <section class="final-end">
-
-        <button
-          class="replay-button"
-          id="replayButton"
-        >
-          ↻ READ OUR STORY AGAIN
-        </button>
-
-        <p class="final-signature">
-          made with love ♡
-        </p>
-
-      </section>
-
-
-      <div class="story-footer">
-        <span>06</span>
-        <span>♡</span>
+      <div class="closing-name">
+        จากฉันถึงเธอ ♡
       </div>
 
     </div>
 
-  </main>
+
+  </div>
 
 
-  <script>
+  <!-- BUTTON -->
 
-    const replayButton =
-      document.getElementById("replayButton");
+  <div class="back-area">
+
+    <a href="index.html" class="back">
+      กลับไปหน้าแรก ♡
+    </a>
+
+    <div class="bottom-text">
+      THE END · 08.10.25
+    </div>
+
+  </div>
 
 
-    replayButton.addEventListener("click", () => {
-
-      window.location.href = "index.html";
-
-    });
-
-  </script>
+</div>
 
 </body>
 </html>
