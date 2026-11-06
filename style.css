@@ -1,1 +1,549 @@
+:root {
+  --claret: #670626;
+  --pink: #FFBDC5;
+  --cream: #FFF9F8;
+  --white: #FFFFFF;
+  --dark: #2B1B20;
+  --soft-pink: #FDECEF;
+}
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #fff1f3 0%,
+      #f7dfe4 45%,
+      #e7c5cc 100%
+    );
+
+  color: var(--white);
+
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 20px;
+}
+
+
+/* ==========================================
+   PHONE
+========================================== */
+
+.phone {
+  position: relative;
+
+  width: min(390px, 90vw);
+  height: min(844px, 92vh);
+
+  min-height: 650px;
+
+  overflow: hidden;
+
+  border-radius: 48px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7d183d 0%,
+      #670626 45%,
+      #3c071a 100%
+    );
+
+  border: 7px solid #171214;
+
+  box-shadow:
+    0 35px 80px rgba(55, 10, 25, 0.35),
+    0 10px 30px rgba(55, 10, 25, 0.20);
+}
+
+
+/* ==========================================
+   TEMPORARY WALLPAPER
+   ยังไม่มีรูปคู่ จึงใช้พื้นหลังสีแดงไว้ก่อน
+========================================== */
+
+.wallpaper {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(255, 189, 197, 0.35) 0%,
+      transparent 35%
+    ),
+
+    linear-gradient(
+      145deg,
+      #8c2449 0%,
+      #670626 48%,
+      #320514 100%
+    );
+
+  transform: scale(1.01);
+}
+
+
+/* ==========================================
+   DARK OVERLAY
+========================================== */
+
+.screen-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(30, 3, 12, 0.30) 0%,
+      rgba(30, 3, 12, 0.10) 35%,
+      rgba(20, 2, 8, 0.48) 68%,
+      rgba(15, 2, 6, 0.90) 100%
+    );
+}
+
+
+/* ==========================================
+   STATUS BAR
+========================================== */
+
+.status-bar {
+  position: absolute;
+
+  top: 22px;
+  left: 0;
+  right: 0;
+
+  z-index: 5;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 25px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.status-icons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 10px;
+
+  opacity: 0.9;
+}
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.content {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  text-align: center;
+
+  padding-top: 95px;
+}
+
+
+/* ==========================================
+   HEART
+========================================== */
+
+.heart-icon {
+  width: 44px;
+  height: 44px;
+
+  margin: 0 auto 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(103, 6, 38, 0.30);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  color: var(--pink);
+
+  font-size: 18px;
+}
+
+
+/* ==========================================
+   TITLES
+========================================== */
+
+.eyebrow {
+  margin-bottom: 9px;
+
+  color: var(--pink);
+
+  font-size: 10px;
+
+  letter-spacing: 4px;
+
+  font-weight: 500;
+}
+
+h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 36px;
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  margin-top: 9px;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+
+  color:
+    rgba(255, 255, 255, 0.72);
+}
+
+
+/* ==========================================
+   PASSCODE DOTS
+========================================== */
+
+.passcode-dots {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 28px;
+}
+
+.passcode-dots span {
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.85);
+
+  background: transparent;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.passcode-dots span.active {
+  background: var(--pink);
+
+  border-color: var(--pink);
+
+  transform: scale(1.2);
+
+  box-shadow:
+    0 0 12px
+    rgba(255, 189, 197, 0.75);
+}
+
+
+/* ==========================================
+   ERROR
+========================================== */
+
+.error-message {
+  height: 17px;
+
+  margin-top: 12px;
+
+  font-size: 10px;
+
+  color: var(--pink);
+
+  opacity: 0;
+
+  transition: opacity 0.2s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
+
+/* ==========================================
+   KEYPAD
+========================================== */
+
+.keypad {
+  width: 255px;
+
+  margin: 8px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 13px 17px;
+}
+
+.number-btn,
+.delete-btn {
+  width: 73px;
+  height: 62px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  color: var(--white);
+
+  background:
+    rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(14px);
+
+  -webkit-backdrop-filter: blur(14px);
+
+  cursor: pointer;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease;
+}
+
+.number-btn:hover,
+.delete-btn:hover {
+  background:
+    rgba(255, 189, 197, 0.25);
+}
+
+.number-btn:active,
+.delete-btn:active {
+  transform: scale(0.88);
+
+  background:
+    rgba(255, 189, 197, 0.40);
+}
+
+.number-btn span {
+  font-size: 24px;
+
+  font-weight: 400;
+
+  line-height: 20px;
+}
+
+.number-btn small {
+  margin-top: 3px;
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+
+  opacity: 0.80;
+}
+
+.delete-btn {
+  font-size: 22px;
+}
+
+.empty-key {
+  width: 73px;
+  height: 62px;
+}
+
+
+/* ==========================================
+   HINT
+========================================== */
+
+.hint {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 22px;
+}
+
+.hint span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    rgba(255, 189, 197, 0.85);
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+}
+
+.hint p {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 17px;
+
+  color:
+    rgba(255, 255, 255, 0.92);
+}
+
+
+/* ==========================================
+   SHAKE
+========================================== */
+
+.phone.shake {
+  animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-9px);
+  }
+
+  40% {
+    transform: translateX(9px);
+  }
+
+  60% {
+    transform: translateX(-7px);
+  }
+
+  80% {
+    transform: translateX(7px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-height: 760px) {
+
+  .phone {
+    height: 94vh;
+
+    min-height: 610px;
+  }
+
+  .content {
+    padding-top: 80px;
+  }
+
+  .passcode-dots {
+    margin-top: 20px;
+  }
+
+  .keypad {
+    gap: 9px 15px;
+  }
+
+  .number-btn,
+  .delete-btn,
+  .empty-key {
+    width: 67px;
+    height: 56px;
+  }
+
+}
+
+
+@media (max-width: 400px) {
+
+  .page {
+    padding: 0;
+  }
+
+  .phone {
+    width: 100vw;
+    height: 100dvh;
+
+    min-height: 100dvh;
+
+    border: none;
+
+    border-radius: 0;
+  }
+
+}
