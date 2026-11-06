@@ -1,233 +1,236 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Love Letter | Our Anniversary</title>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <main class="story-page letter-page">
-
-    <div class="story-inner">
-
-      <!-- HEADER -->
-      <div class="story-header">
-
-        <div class="chapter-label">
-          CHAPTER 05
-        </div>
-
-        <h1 class="story-title">
-          Love Letter
-        </h1>
-
-        <p class="story-intro">
-          มีบางความรู้สึกที่อยากบอกเธออีกครั้ง ♡
-        </p>
-
-      </div>
-
-
-      <!-- ENVELOPE -->
-      <section class="letter-section">
-
-        <div class="envelope-wrap">
-
-          <button
-            class="envelope"
-            id="envelope"
-            aria-label="Open love letter"
-          >
-
-            <div class="envelope-back"></div>
-
-            <div class="letter-paper">
-
-              <div class="letter-paper-inner">
-
-                <span>
-                  TO MY LOVE
-                </span>
-
-                <strong>
-                  ♡
-                </strong>
-
-              </div>
-
-            </div>
-
-            <div class="envelope-front"></div>
-
-            <div class="envelope-flap"></div>
-
-            <div class="wax-seal">
-              ♡
-            </div>
-
-          </button>
-
-        </div>
-
-
-        <p class="open-letter">
-          แตะซองจดหมายเพื่อเปิด
-        </p>
-
-      </section>
-
-
-      <!-- LETTER -->
-      <section
-        class="love-letter"
-        id="loveLetter"
-      >
-
-        <div class="letter-top">
-
-          <span>
-            TO MY FAVORITE PERSON
-          </span>
-
-          <span>
-            ♡
-          </span>
-
-        </div>
-
-
-        <div class="letter-content">
-
-          <p class="letter-greeting">
-            ถึงคนที่เรารัก,
-          </p>
-
-
-          <p>
-            ขอบคุณที่เข้ามาเป็นส่วนหนึ่ง
-            ของชีวิตเรา และทำให้วันธรรมดา ๆ
-            หลายวันกลายเป็นวันที่มีความหมาย
-          </p>
-
-
-          <p>
-            ขอบคุณสำหรับทุกบทสนทนา
-            ทุกเสียงหัวเราะ ทุกความทรงจำ
-            และทุกช่วงเวลาที่เราได้มีให้กัน
-          </p>
-
-
-          <p>
-            เราอาจไม่ได้สมบูรณ์แบบ
-            และบางครั้งเราอาจเข้าใจกันไม่ตรงกัน
-            แต่สิ่งหนึ่งที่เราอยากให้เธอรู้คือ
-            ความรู้สึกที่เรามีให้เธอนั้นจริงเสมอ
-          </p>
-
-
-          <p>
-            ไม่ว่าจะผ่านไปอีกกี่วัน
-            หรือเรื่องราวของเราจะพาไปถึงที่ไหน
-            เราจะยังขอบคุณที่ครั้งหนึ่ง
-            เราได้พบกันและได้รักกัน
-          </p>
-
-
-          <p>
-            และถ้าวันนี้เธอถามว่า
-            เราอยากอยู่กับเธอไปอีกนานแค่ไหน...
-          </p>
-
-
-          <p class="letter-emphasis">
-            คำตอบก็คือ<br>
-            นานเท่าที่เรายังเลือกกันและกัน ♡
-          </p>
-
-
-          <p class="letter-sign">
-            รักเสมอ,<br>
-            <span>คนของเธอ</span>
-          </p>
-
-        </div>
-
-
-        <div class="letter-bottom">
-          <span>OUR ANNIVERSARY</span>
-          <span>♡</span>
-          <span>FOREVER & ALWAYS</span>
-        </div>
-
-      </section>
-
-
-      <!-- NEXT -->
-      <section class="letter-next">
-
-        <p>
-          One last thing...
-        </p>
-
-        <a href="final.html" class="story-continue">
-          FINAL SURPRISE →
-        </a>
-
-      </section>
-
-
-      <div class="story-footer">
-        <span>05</span>
-        <span>♡</span>
-      </div>
-
-    </div>
-
-  </main>
-
-
-  <script>
-
-    const envelope =
-      document.getElementById("envelope");
-
-    const loveLetter =
-      document.getElementById("loveLetter");
-
-    const openText =
-      document.querySelector(".open-letter");
-
-
-    envelope.addEventListener("click", () => {
-
-      if (envelope.classList.contains("opened")) {
-        return;
-      }
-
-      envelope.classList.add("opened");
-
-      openText.textContent =
-        "A letter, written just for you ♡";
-
-      setTimeout(() => {
-
-        loveLetter.classList.add("show");
-
-        loveLetter.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      }, 850);
-
-    });
-
-  </script>
-
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Letter ♡</title>
+
+<style>
+:root{
+  --claret:#670626;
+  --pink:#FFBDC5;
+  --cream:#FFF9F8;
+  --soft:#FDECEF;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background-color:var(--pink);
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.55) 1.4px,
+      transparent 1.5px
+    );
+
+  background-size:34px 34px;
+
+  color:var(--claret);
+  overflow-x:hidden;
+}
+
+.page{
+  width:100%;
+  max-width:560px;
+  margin:0 auto;
+  padding:55px 22px 80px;
+  position:relative;
+}
+
+/* --------------------
+   HEADER
+-------------------- */
+
+.chapter{
+  text-align:center;
+  font-size:10px;
+  letter-spacing:4px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+h1{
+  text-align:center;
+  font-family:Georgia, serif;
+  font-size:42px;
+  line-height:1.05;
+  font-weight:500;
+  letter-spacing:-1px;
+}
+
+.subtitle{
+  text-align:center;
+  margin-top:15px;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:.75;
+  line-height:1.8;
+}
+
+/* --------------------
+   ENVELOPE
+-------------------- */
+
+.envelope-area{
+  margin:45px auto 35px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  perspective:1000px;
+}
+
+.envelope{
+  width:100%;
+  max-width:410px;
+  height:260px;
+  position:relative;
+  cursor:pointer;
+}
+
+.envelope-back{
+  position:absolute;
+  inset:0;
+  background:var(--cream);
+  border-radius:8px;
+  box-shadow:
+    0 18px 45px rgba(103,6,38,.18);
+  overflow:hidden;
+}
+
+.envelope-back::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 49.5%,
+      rgba(103,6,38,.08) 50%,
+      transparent 50.5%
+    ),
+    linear-gradient(
+      225deg,
+      transparent 49.5%,
+      rgba(103,6,38,.08) 50%,
+      transparent 50.5%
+    );
+}
+
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:55%;
+  background:#fff4f5;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+  z-index:4;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+}
+
+.flap::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:42%;
+  transform:translate(-50%,-50%);
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:var(--pink);
+  border:2px solid rgba(103,6,38,.12);
+}
+
+.flap::before{
+  content:"♡";
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:42%;
+  transform:translate(-50%,-50%);
+  font-size:24px;
+  color:var(--claret);
+}
+
+.letter-paper{
+  position:absolute;
+  width:88%;
+  height:88%;
+  left:6%;
+  top:8%;
+  background:var(--cream);
+  border-radius:5px;
+  z-index:2;
+  padding:25px;
+  transition:
+    transform .9s cubic-bezier(.2,.8,.2,1),
+    top .9s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 8px 25px rgba(103,6,38,.08);
+}
+
+.letter-paper::before{
+  content:"";
+  position:absolute;
+  left:25px;
+  right:25px;
+  top:58px;
+  height:1px;
+  background:rgba(103,6,38,.12);
+  box-shadow:
+    0 22px 0 rgba(103,6,38,.08),
+    0 44px 0 rgba(103,6,38,.08);
+}
+
+.paper-title{
+  position:relative;
+  z-index:2;
+  font-family:Georgia,serif;
+  font-size:20px;
+}
+
+.paper-small{
+  position:absolute;
+  bottom:20px;
+  left:25px;
+  font-size:9px;
+  letter-spacing:2px;
+  opacity:.5;
+}
+
+.envelope.open .flap{
+  transform:rotateX(180deg);
+  z-index:1;
+}
+
+.envelope.open .letter-paper{
+  top:-35px;
+  transform:translateY(-5px);
+  z-index:5;
+}
+
+/* --------------------
+   INSTRUCTION
+-------------------- */
+
+.tap{
+  text-align:center;
+  margin-top:12px;
+  font-size:10px;
+  letter-spacing:2px;
