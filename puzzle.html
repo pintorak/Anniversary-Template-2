@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Memory Puzzle | Our Anniversary</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="story-page puzzle-page">
+
+    <div class="story-inner">
+
+      <div class="story-header">
+
+        <div class="chapter-label">
+          CHAPTER 03
+        </div>
+
+        <h1 class="story-title">
+          Memory Puzzle
+        </h1>
+
+        <p class="story-intro">
+          ค่อย ๆ ต่อชิ้นส่วนความทรงจำของเราเข้าด้วยกัน ♡
+        </p>
+
+      </div>
+
+
+      <!-- PUZZLE -->
+      <section class="puzzle-card">
+
+        <div class="puzzle-top">
+
+          <div>
+            <span class="puzzle-label">
+              OUR MEMORY
+            </span>
+
+            <h2>
+              Find the pieces
+            </h2>
+          </div>
+
+          <div class="puzzle-counter">
+            <span id="moves">0</span> moves
+          </div>
+
+        </div>
+
+
+        <div class="puzzle-board" id="puzzleBoard">
+
+          <button class="puzzle-piece" data-index="0"></button>
+          <button class="puzzle-piece" data-index="1"></button>
+          <button class="puzzle-piece" data-index="2"></button>
+
+          <button class="puzzle-piece" data-index="3"></button>
+          <button class="puzzle-piece" data-index="4"></button>
+          <button class="puzzle-piece" data-index="5"></button>
+
+          <button class="puzzle-piece" data-index="6"></button>
+          <button class="puzzle-piece" data-index="7"></button>
+          <button class="puzzle-piece empty" data-index="8"></button>
+
+        </div>
+
+
+        <p class="puzzle-note">
+          แตะชิ้นส่วนข้างช่องว่างเพื่อเลื่อนมัน ♡
+        </p>
+
+      </section>
+
+
+      <!-- SUCCESS -->
+      <section class="puzzle-success" id="puzzleSuccess">
+
+        <div class="success-heart">
+          ♡
+        </div>
+
+        <div class="chapter-label">
+          MEMORY FOUND
+        </div>
+
+        <h2>
+          You found us.
+        </h2>
+
+        <p>
+          ความทรงจำบางอย่างอาจต้องใช้เวลา<br>
+          แต่สุดท้ายมันก็กลับมาอยู่ในที่ของมันเสมอ
+        </p>
+
+        <div class="memory-message">
+          <span>
+            ONE MEMORY
+          </span>
+
+          <strong>
+            TWO HEARTS
+          </strong>
+
+          <span>
+            ONE STORY
+          </span>
+        </div>
+
+        <a href="song.html" class="story-continue">
+          OUR SONG →
+        </a>
+
+      </section>
+
+
+      <div class="story-footer">
+        <span>03</span>
+        <span>♡</span>
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const board = document.getElementById("puzzleBoard");
+    const pieces = Array.from(
+      document.querySelectorAll(".puzzle-piece")
+    );
+
+    const movesDisplay = document.getElementById("moves");
+    const success = document.getElementById("puzzleSuccess");
+
+    let moves = 0;
+
+    /*
+      Puzzle layout
+
+      0 1 2
+      3 4 5
+      6 7 8
+
+      8 = empty
+    */
+
+    let puzzle = [
+      0, 1, 2,
+      3, 4, 5,
+      6, 7, 8
+    ];
+
+
+    function renderPuzzle() {
+
+      pieces.forEach((piece, index) => {
+
+        const value = puzzle[index];
+
+        if (value === 8) {
+
+          piece.classList.add("empty");
+          piece.textContent = "";
+
+        } else {
+
+          piece.classList.remove("empty");
+
+          piece.innerHTML = `
+            <span>${value + 1}</span>
+          `;
+
+        }
+
+      });
+
+    }
+
+
+    function isAdjacent(index1, index2) {
+
+      const row1 = Math.floor(index1 / 3);
+      const col1 = index1 % 3;
+
+      const row2 = Math.floor(index2 / 3);
+      const col2 = index2 % 3;
+
+      const rowDifference =
+        Math.abs(row1 - row2);
+
+      const colDifference =
+        Math.abs(col1 - col2);
+
+      return (
+        rowDifference + colDifference === 1
+      );
+
+    }
+
+
+    function movePiece(index) {
+
+      const emptyIndex =
+        puzzle.indexOf(8);
+
+      if (!isAdjacent(index, emptyIndex)) {
+        return;
+      }
+
+      [
+        puzzle[index],
+        puzzle[emptyIndex]
+      ] = [
+        puzzle[emptyIndex],
+        puzzle[index]
+      ];
+
+      moves++;
+
+      movesDisplay.textContent = moves;
+
+      renderPuzzle();
+
+      checkComplete();
+
+    }
+
+
+    function checkComplete() {
+
+      const complete =
+        puzzle.every((value, index) => {
+
+          return value === index;
+
+        });
+
+      if (complete) {
+
+        setTimeout(() => {
+
+          success.classList.add("show");
+
+          success.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }, 500);
+
+      }
+
+    }
+
+
+    pieces.forEach((piece, index) => {
+
+      piece.addEventListener("click", () => {
+
+        movePiece(index);
+
+      });
+
+    });
+
+
+    /*
+      Shuffle the puzzle while making sure
+      the puzzle remains solvable.
+    */
+
+    function shufflePuzzle() {
+
+      let emptyIndex = 8;
+
+      for (let i = 0; i < 40; i++) {
+
+        const possibleMoves = [];
+
+        for (let j = 0; j < 9; j++) {
+
+          if (isAdjacent(j, emptyIndex)) {
+            possibleMoves.push(j);
+          }
+
+        }
+
+        const randomIndex =
+          possibleMoves[
+            Math.floor(
+              Math.random() * possibleMoves.length
+            )
+          ];
+
+        [
+          puzzle[randomIndex],
+          puzzle[emptyIndex]
+        ] = [
+          puzzle[emptyIndex],
+          puzzle[randomIndex]
+        ];
+
+        emptyIndex = randomIndex;
+
+      }
+
+      moves = 0;
+
+      movesDisplay.textContent = "0";
+
+      renderPuzzle();
+
+    }
+
+
+    renderPuzzle();
+
+    shufflePuzzle();
+
+  </script>
+
+</body>
+</html>
