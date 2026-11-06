@@ -1,103 +1,395 @@
-```html
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Anniversary ♡</title>
 
-  <title>Our Little Anniversary</title>
+<style>
+:root {
+  --claret: #670626;
+  --pink: #FFBDC5;
+  --cream: #FFF9F8;
+  --soft-pink: #FDECEF;
+}
 
-  <link rel="stylesheet" href="style.css">
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: var(--claret);
+
+  background-color: var(--pink);
+  background-image: radial-gradient(
+    rgba(103, 6, 38, 0.13) 1.4px,
+    transparent 1.5px
+  );
+  background-size: 30px 30px;
+}
+
+.decoration {
+  position: fixed;
+  color: rgba(103, 6, 38, 0.3);
+  pointer-events: none;
+  animation: float 4s ease-in-out infinite;
+}
+
+.heart1 { top: 12%; left: 12%; font-size: 22px; }
+.heart2 { top: 22%; right: 13%; font-size: 16px; animation-delay: 1s; }
+.heart3 { bottom: 15%; left: 17%; font-size: 17px; animation-delay: 2s; }
+.heart4 { bottom: 12%; right: 14%; font-size: 23px; animation-delay: 3s; }
+
+@keyframes float {
+  50% { transform: translateY(-7px); }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 370px;
+}
+
+.card {
+  width: 100%;
+  padding: 32px 25px 25px;
+  text-align: center;
+  border-radius: 25px;
+  background: var(--cream);
+  box-shadow: 0 18px 45px rgba(103, 6, 38, 0.13);
+}
+
+.ornament {
+  margin-bottom: 13px;
+  font-size: 17px;
+  letter-spacing: 5px;
+}
+
+.eyebrow {
+  margin-bottom: 9px;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: var(--claret);
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: normal;
+  color: var(--claret);
+}
+
+h1 span {
+  color: var(--pink);
+}
+
+.subtitle {
+  margin-bottom: 23px;
+  color: #946b77;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.dots span {
+  position: relative;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1.7px solid var(--pink);
+  border-radius: 50%;
+}
+
+.dots span.active {
+  border-color: transparent;
+}
+
+.dots span.active::after {
+  content: "♥";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--claret);
+  font-size: 15px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 11px 12px;
+  max-width: 245px;
+  margin: 0 auto;
+}
+
+.key {
+  width: 56px;
+  height: 56px;
+  justify-self: center;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: var(--claret);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(103, 6, 38, 0.07);
+  transition: 0.15s ease;
+}
+
+.key:hover {
+  background: var(--soft-pink);
+}
+
+.key:active {
+  transform: scale(0.9);
+  background: var(--pink);
+}
+
+.action {
+  width: 56px;
+  height: 56px;
+  justify-self: center;
+  border: none;
+  background: transparent;
+  color: var(--claret);
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action.delete {
+  font-size: 19px;
+}
+
+.hint {
+  margin-top: 20px;
+  color: #b17d8b;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+#error {
+  min-height: 19px;
+  margin-top: 10px;
+  color: var(--claret);
+  font-size: 11px;
+}
+
+.card.shake {
+  animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+.footer {
+  margin-top: 14px;
+  text-align: center;
+  color: var(--claret);
+  opacity: 0.65;
+  font-family: Georgia, serif;
+  font-size: 12px;
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 27px 20px 21px;
+  }
+
+  .key, .action {
+    width: 52px;
+    height: 52px;
+  }
+
+  .dots {
+    gap: 14px;
+  }
+}
+
+@media (max-height: 650px) {
+  .card {
+    padding-top: 20px;
+    padding-bottom: 15px;
+  }
+
+  .subtitle {
+    margin-bottom: 13px;
+  }
+
+  .dots {
+    margin-bottom: 14px;
+  }
+
+  .key, .action {
+    height: 46px;
+    width: 46px;
+  }
+
+  .keypad {
+    gap: 7px 12px;
+  }
+
+  .hint {
+    margin-top: 11px;
+  }
+}
+</style>
 </head>
 
-<body class="pin-page">
+<body>
 
-  <!-- background decoration -->
-  <div class="floating-heart heart-1">♡</div>
-  <div class="floating-heart heart-2">♡</div>
-  <div class="floating-heart heart-3">♡</div>
-  <div class="floating-heart heart-4">♡</div>
+<div class="decoration heart1">♡</div>
+<div class="decoration heart2">♡</div>
+<div class="decoration heart3">♡</div>
+<div class="decoration heart4">♡</div>
 
-  <main class="pin-container">
+<main class="container">
+  <section class="card" id="pinCard">
 
-    <section class="pin-card">
+    <div class="ornament">— ♡ —</div>
 
-      <!-- top decoration -->
-      <div class="tiny-line">
-        <span></span>
-        <i>♡</i>
-        <span></span>
-      </div>
+    <p class="eyebrow">OUR LITTLE WORLD</p>
 
-      <p class="eyebrow">
-        OUR LITTLE WORLD
-      </p>
+    <h1>Enter PIN <span>♡</span></h1>
 
-      <h1>
-        Enter PIN
-        <span>♡</span>
-      </h1>
-
-      <p class="subtitle">
-        ใส่รหัสของเรา<br>
-        แล้วไปเปิดความทรงจำกัน
-      </p>
-
-      <!-- PIN -->
-      <div class="pin-dots" id="pinDots">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <!-- keypad -->
-      <div class="keypad">
-
-        <button class="key" data-number="1">1</button>
-        <button class="key" data-number="2">2</button>
-        <button class="key" data-number="3">3</button>
-
-        <button class="key" data-number="4">4</button>
-        <button class="key" data-number="5">5</button>
-        <button class="key" data-number="6">6</button>
-
-        <button class="key" data-number="7">7</button>
-        <button class="key" data-number="8">8</button>
-        <button class="key" data-number="9">9</button>
-
-        <button class="text-key" id="clearBtn">
-          CLEAR
-        </button>
-
-        <button class="key" data-number="0">
-          0
-        </button>
-
-        <button class="text-key delete" id="deleteBtn">
-          ⌫
-        </button>
-
-      </div>
-
-      <p class="hint">
-        our special date · 6 digits
-      </p>
-
-      <p id="errorMessage"></p>
-
-    </section>
-
-    <p class="bottom-note">
-      made with ♡ for someone special
+    <p class="subtitle">
+      ใส่รหัสของเรา<br>
+      แล้วไปเปิดความทรงจำกัน
     </p>
 
-  </main>
+    <div class="dots" id="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-  <script src="script.js"></script>
+    <div class="keypad">
+      <button class="key" data-num="1">1</button>
+      <button class="key" data-num="2">2</button>
+      <button class="key" data-num="3">3</button>
+
+      <button class="key" data-num="4">4</button>
+      <button class="key" data-num="5">5</button>
+      <button class="key" data-num="6">6</button>
+
+      <button class="key" data-num="7">7</button>
+      <button class="key" data-num="8">8</button>
+      <button class="key" data-num="9">9</button>
+
+      <button class="action" id="clear">CLEAR</button>
+      <button class="key" data-num="0">0</button>
+      <button class="action delete" id="delete">⌫</button>
+    </div>
+
+    <p class="hint">OUR SPECIAL DATE · 6 DIGITS</p>
+    <p id="error"></p>
+
+  </section>
+
+  <p class="footer">made with ♡ for someone special</p>
+</main>
+
+<script>
+const correctPIN = "081025";
+let pin = "";
+
+const dots = document.querySelectorAll("#dots span");
+const error = document.getElementById("error");
+const card = document.getElementById("pinCard");
+
+function refreshDots() {
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("active", index < pin.length);
+  });
+}
+
+function clearPIN() {
+  pin = "";
+  error.textContent = "";
+  refreshDots();
+}
+
+function removeDigit() {
+  pin = pin.slice(0, -1);
+  error.textContent = "";
+  refreshDots();
+}
+
+function enterDigit(number) {
+  if (pin.length >= 6) return;
+
+  pin += number;
+  error.textContent = "";
+  refreshDots();
+
+  if (pin.length === 6) checkPIN();
+}
+
+function checkPIN() {
+  if (pin === correctPIN) {
+    error.textContent = "♡ Welcome to our story ♡";
+
+    setTimeout(() => {
+      window.location.href = "story.html";
+    }, 500);
+
+    return;
+  }
+
+  error.textContent = "รหัสไม่ถูกต้อง ลองอีกครั้งนะ ♡";
+  card.classList.remove("shake");
+  void card.offsetWidth;
+  card.classList.add("shake");
+
+  setTimeout(() => {
+    clearPIN();
+    card.classList.remove("shake");
+  }, 650);
+}
+
+document.querySelectorAll("[data-num]").forEach(button => {
+  button.addEventListener("click", () => {
+    enterDigit(button.dataset.num);
+  });
+});
+
+document.getElementById("clear").addEventListener("click", clearPIN);
+document.getElementById("delete").addEventListener("click", removeDigit);
+
+document.addEventListener("keydown", event => {
+  if (/^[0-9]$/.test(event.key)) enterDigit(event.key);
+  if (event.key === "Backspace" || event.key === "Delete") removeDigit();
+  if (event.key === "Escape") clearPIN();
+});
+
+refreshDots();
+</script>
 
 </body>
 </html>
-```
