@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Love Letter | Our Anniversary</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="story-page letter-page">
+
+    <div class="story-inner">
+
+      <!-- HEADER -->
+      <div class="story-header">
+
+        <div class="chapter-label">
+          CHAPTER 05
+        </div>
+
+        <h1 class="story-title">
+          Love Letter
+        </h1>
+
+        <p class="story-intro">
+          มีบางความรู้สึกที่อยากบอกเธออีกครั้ง ♡
+        </p>
+
+      </div>
+
+
+      <!-- ENVELOPE -->
+      <section class="letter-section">
+
+        <div class="envelope-wrap">
+
+          <button
+            class="envelope"
+            id="envelope"
+            aria-label="Open love letter"
+          >
+
+            <div class="envelope-back"></div>
+
+            <div class="letter-paper">
+
+              <div class="letter-paper-inner">
+
+                <span>
+                  TO MY LOVE
+                </span>
+
+                <strong>
+                  ♡
+                </strong>
+
+              </div>
+
+            </div>
+
+            <div class="envelope-front"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="wax-seal">
+              ♡
+            </div>
+
+          </button>
+
+        </div>
+
+
+        <p class="open-letter">
+          แตะซองจดหมายเพื่อเปิด
+        </p>
+
+      </section>
+
+
+      <!-- LETTER -->
+      <section
+        class="love-letter"
+        id="loveLetter"
+      >
+
+        <div class="letter-top">
+
+          <span>
+            TO MY FAVORITE PERSON
+          </span>
+
+          <span>
+            ♡
+          </span>
+
+        </div>
+
+
+        <div class="letter-content">
+
+          <p class="letter-greeting">
+            ถึงคนที่เรารัก,
+          </p>
+
+
+          <p>
+            ขอบคุณที่เข้ามาเป็นส่วนหนึ่ง
+            ของชีวิตเรา และทำให้วันธรรมดา ๆ
+            หลายวันกลายเป็นวันที่มีความหมาย
+          </p>
+
+
+          <p>
+            ขอบคุณสำหรับทุกบทสนทนา
+            ทุกเสียงหัวเราะ ทุกความทรงจำ
+            และทุกช่วงเวลาที่เราได้มีให้กัน
+          </p>
+
+
+          <p>
+            เราอาจไม่ได้สมบูรณ์แบบ
+            และบางครั้งเราอาจเข้าใจกันไม่ตรงกัน
+            แต่สิ่งหนึ่งที่เราอยากให้เธอรู้คือ
+            ความรู้สึกที่เรามีให้เธอนั้นจริงเสมอ
+          </p>
+
+
+          <p>
+            ไม่ว่าจะผ่านไปอีกกี่วัน
+            หรือเรื่องราวของเราจะพาไปถึงที่ไหน
+            เราจะยังขอบคุณที่ครั้งหนึ่ง
+            เราได้พบกันและได้รักกัน
+          </p>
+
+
+          <p>
+            และถ้าวันนี้เธอถามว่า
+            เราอยากอยู่กับเธอไปอีกนานแค่ไหน...
+          </p>
+
+
+          <p class="letter-emphasis">
+            คำตอบก็คือ<br>
+            นานเท่าที่เรายังเลือกกันและกัน ♡
+          </p>
+
+
+          <p class="letter-sign">
+            รักเสมอ,<br>
+            <span>คนของเธอ</span>
+          </p>
+
+        </div>
+
+
+        <div class="letter-bottom">
+          <span>OUR ANNIVERSARY</span>
+          <span>♡</span>
+          <span>FOREVER & ALWAYS</span>
+        </div>
+
+      </section>
+
+
+      <!-- NEXT -->
+      <section class="letter-next">
+
+        <p>
+          One last thing...
+        </p>
+
+        <a href="final.html" class="story-continue">
+          FINAL SURPRISE →
+        </a>
+
+      </section>
+
+
+      <div class="story-footer">
+        <span>05</span>
+        <span>♡</span>
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const envelope =
+      document.getElementById("envelope");
+
+    const loveLetter =
+      document.getElementById("loveLetter");
+
+    const openText =
+      document.querySelector(".open-letter");
+
+
+    envelope.addEventListener("click", () => {
+
+      if (envelope.classList.contains("opened")) {
+        return;
+      }
+
+      envelope.classList.add("opened");
+
+      openText.textContent =
+        "A letter, written just for you ♡";
+
+      setTimeout(() => {
+
+        loveLetter.classList.add("show");
+
+        loveLetter.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 850);
+
+    });
+
+  </script>
+
+</body>
+</html>
