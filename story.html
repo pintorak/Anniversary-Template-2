@@ -1,325 +1,193 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Our Story ♡</title>
-
-  <style>
-    :root {
-      --claret: #670626;
-      --pink: #FFBDC5;
-      --cream: #FFF9F8;
-      --white: #FFFFFF;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100svh;
-      font-family: Arial, sans-serif;
-      color: var(--claret);
-
-      background-color: var(--pink);
-
-      background-image:
-        radial-gradient(
-          rgba(103, 6, 38, 0.13) 1.4px,
-          transparent 1.5px
-        );
-
-      background-size: 30px 30px;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 760px;
-      margin: auto;
-      padding: 45px 20px 60px;
-    }
-
-    .top {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .chapter {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: 42px;
-      font-weight: normal;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .heart {
-      color: var(--pink);
-    }
-
-    .intro {
-      max-width: 440px;
-      margin: auto;
-      color: #8c5868;
-      font-size: 11px;
-      line-height: 1.9;
-    }
-
-    .story-list {
-      display: grid;
-      gap: 18px;
-    }
-
-    .story-card {
-      background: var(--cream);
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow:
-        0 12px 30px rgba(103, 6, 38, 0.10);
-    }
-
-    .photo {
-      width: 100%;
-      height: 180px;
-      border-radius: 16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #f8d9dd,
-          #fff4f4
-        );
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: rgba(103, 6, 38, 0.35);
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .story-content {
-      padding: 18px 5px 5px;
-    }
-
-    .story-number {
-      font-size: 9px;
-      letter-spacing: 2px;
-      font-weight: 700;
-      margin-bottom: 7px;
-    }
-
-    h2 {
-      font-family: Georgia, serif;
-      font-size: 24px;
-      font-weight: normal;
-      margin-bottom: 7px;
-    }
-
-    .story-text {
-      color: #8c5868;
-      font-size: 11px;
-      line-height: 1.8;
-    }
-
-    .bottom {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .continue {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 190px;
-      padding: 13px 22px;
-
-      border-radius: 999px;
-
-      background: var(--claret);
-      color: white;
-
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-
-      text-decoration: none;
-
-      box-shadow:
-        0 8px 20px rgba(103, 6, 38, 0.18);
-
-      transition: 0.15s ease;
-    }
-
-    .continue:hover {
-      background: #820a32;
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      margin-top: 18px;
-      text-align: center;
-
-      color: rgba(103, 6, 38, 0.55);
-
-      font-family: Georgia, serif;
-      font-size: 12px;
-    }
-
-    @media (max-width: 500px) {
-      .page {
-        padding: 32px 15px 45px;
-      }
-
-      h1 {
-        font-size: 35px;
-      }
-
-      .photo {
-        height: 155px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <main class="page">
-
-    <header class="top">
-
-      <div class="chapter">
-        CHAPTER 01
-      </div>
-
-      <h1>
-        Our Story <span class="heart">♡</span>
-      </h1>
-
-      <p class="intro">
-        เรื่องราวของเราอาจไม่ได้สมบูรณ์แบบ
-        แต่ทุกช่วงเวลาที่มีเธออยู่ในนั้น
-        มีความหมายเสมอ
-      </p>
-
-    </header>
-
-
-    <section class="story-list">
-
-      <article class="story-card">
-
-        <div class="photo">
-          OUR FIRST PHOTO
-        </div>
-
-        <div class="story-content">
-
-          <div class="story-number">
-            01 · THE BEGINNING
-          </div>
-
-          <h2>
-            วันแรกที่เราได้รู้จักกัน
-          </h2>
-
-          <p class="story-text">
-            บางครั้งเรื่องราวที่สำคัญที่สุด
-            ก็เริ่มต้นจากช่วงเวลาธรรมดา ๆ
-            ที่เราไม่รู้เลยว่า
-            วันหนึ่งมันจะกลายเป็นความทรงจำที่สำคัญ
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="story-card">
-
-        <div class="photo">
-          LITTLE MOMENTS
-        </div>
-
-        <div class="story-content">
-
-          <div class="story-number">
-            02 · LITTLE MOMENTS
-          </div>
-
-          <h2>
-            เรื่องเล็ก ๆ ที่กลายเป็นความทรงจำ
-          </h2>
-
-          <p class="story-text">
-            บทสนทนาเล็ก ๆ รอยยิ้ม
-            การคิดถึงกัน และช่วงเวลาธรรมดา
-            ที่ค่อย ๆ กลายเป็นเรื่องราวของเรา
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="story-card">
-
-        <div class="photo">
-          STILL US
-        </div>
-
-        <div class="story-content">
-
-          <div class="story-number">
-            03 · STILL US
-          </div>
-
-          <h2>
-            และวันนี้ก็ยังเป็นเรา
-          </h2>
-
-          <p class="story-text">
-            จากวันแรกจนถึงวันนี้
-            เรายังมีเรื่องให้เรียนรู้
-            มีเรื่องให้หัวเราะ
-            และมีความทรงจำใหม่ ๆ ที่กำลังจะเกิดขึ้น
-          </p>
-
-        </div>
-
-      </article>
-
-    </section>
-
-
-    <div class="bottom">
-
-      <a href="quiz.html" class="continue">
-        CONTINUE OUR STORY →
-      </a>
-
-      <div class="footer">
-        still writing our story ♡
-      </div>
-
-    </div>
-
-  </main>
-
-</body>
-</html>
-```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle, rgba(103,6,38,.10) 1.5px, transparent 1.5px),
+    #FFBDC5;
+  background-size: 24px 24px;
+  font-family: 'Kanit', sans-serif;
+  color: #670626;
+  overflow-x: hidden;
+}
+
+/* ===== TOP ===== */
+
+.page {
+  min-height: 100vh;
+  padding: 55px 20px 80px;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.chapter {
+  font-size: 11px;
+  letter-spacing: 4px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  opacity: .65;
+}
+
+.title {
+  font-family: 'Itim', cursive;
+  font-size: clamp(42px, 12vw, 72px);
+  line-height: .9;
+  color: #670626;
+}
+
+.subtitle {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #670626;
+  opacity: .65;
+}
+
+/* ===== POLAROID AREA ===== */
+
+.polaroid-area {
+  width: min(100%, 520px);
+  margin: auto;
+  position: relative;
+  min-height: 760px;
+}
+
+/* ===== CARD ===== */
+
+.polaroid {
+  position: absolute;
+  width: 235px;
+  height: 305px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .75s cubic-bezier(.2,.8,.2,1);
+}
+
+.polaroid.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  background: #FFF9F8;
+  border-radius: 3px;
+  padding: 11px 11px 28px;
+
+  box-shadow:
+    0 15px 35px rgba(103,6,38,.20),
+    0 4px 10px rgba(103,6,38,.10);
+}
+
+/* รูปด้านหน้า */
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  width: 100%;
+  height: 225px;
+  background: #FDECEF;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #670626;
+  opacity: .35;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+}
+
+.photo-number {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #670626;
+  font-size: 11px;
+}
+
+.tap {
+  position: absolute;
+  right: -3px;
+  bottom: 72px;
+  background: #FF8FA0;
+  color: white;
+  font-size: 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  letter-spacing: .5px;
+  box-shadow: 0 4px 10px rgba(103,6,38,.15);
+}
+
+.polaroid-caption {
+  text-align: center;
+  font-family: 'Itim', cursive;
+  font-size: 18px;
+  margin-top: 8px;
+  color: #670626;
+}
+
+/* ===== BACK ===== */
+
+.card-back {
+  transform: rotateY(180deg);
+  padding: 28px 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(145deg, #FFF
