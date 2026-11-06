@@ -1,253 +1,646 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Couple Quiz | Our Anniversary</title>
+  <title>A Little Quiz ♡</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --claret: #670626;
+      --pink: #ffbdc5;
+      --cream: #fff9f8;
+      --soft-pink: #fdecef;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family: "Kanit", sans-serif;
+
+      color: var(--claret);
+
+      background-color: var(--pink);
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.72) 2px,
+          transparent 2.4px
+        );
+
+      background-size: 27px 27px;
+
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    .page {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 48px 20px 60px;
+
+      position: relative;
+    }
+
+    /* =========================
+       DECORATIONS
+    ========================= */
+
+    .heart {
+      position: fixed;
+
+      font-family: "Itim", cursive;
+
+      color: rgba(103,6,38,0.14);
+
+      pointer-events: none;
+    }
+
+    .heart.one {
+      top: 13%;
+      left: 8%;
+      font-size: 23px;
+      transform: rotate(-15deg);
+    }
+
+    .heart.two {
+      top: 27%;
+      right: 8%;
+      font-size: 17px;
+      transform: rotate(12deg);
+    }
+
+    .heart.three {
+      bottom: 17%;
+      left: 10%;
+      font-size: 20px;
+    }
+
+    .heart.four {
+      bottom: 9%;
+      right: 11%;
+      font-size: 25px;
+      transform: rotate(-12deg);
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      text-align: center;
+
+      margin-bottom: 30px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .chapter {
+      font-size: 10px;
+
+      letter-spacing: 4px;
+
+      margin-bottom: 8px;
+    }
+
+    .title {
+      font-family: "Itim", cursive;
+
+      font-size: clamp(45px, 10vw, 62px);
+
+      line-height: 0.95;
+
+      margin-bottom: 11px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+
+      font-weight: 300;
+
+      letter-spacing: 1px;
+
+      color: rgba(103,6,38,0.62);
+    }
+
+    /* =========================
+       QUIZ CARD
+    ========================= */
+
+    .quiz-card {
+      width: min(500px, 100%);
+
+      padding: 34px 30px 30px;
+
+      background: rgba(255,249,248,0.94);
+
+      border-radius: 8px;
+
+      box-shadow:
+        0 20px 50px rgba(103,6,38,0.14);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
+       PROGRESS
+    ========================= */
+
+    .progress-row {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 13px;
+    }
+
+    .progress-text {
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      color: rgba(103,6,38,0.55);
+    }
+
+    .score {
+      font-size: 10px;
+
+      letter-spacing: 1px;
+
+      color: rgba(103,6,38,0.55);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 5px;
+
+      border-radius: 999px;
+
+      background: rgba(103,6,38,0.1);
+
+      overflow: hidden;
+
+      margin-bottom: 32px;
+    }
+
+    .progress-fill {
+      width: 20%;
+      height: 100%;
+
+      background: var(--claret);
+
+      border-radius: 999px;
+
+      transition: width 0.4s ease;
+    }
+
+    /* =========================
+       QUESTION
+    ========================= */
+
+    .question-number {
+      font-family: "Itim", cursive;
+
+      font-size: 17px;
+
+      color: rgba(103,6,38,0.45);
+
+      margin-bottom: 5px;
+    }
+
+    .question {
+      font-family: "Itim", cursive;
+
+      font-size: 31px;
+
+      line-height: 1.15;
+
+      color: var(--claret);
+
+      margin-bottom: 25px;
+    }
+
+    /* =========================
+       OPTIONS
+    ========================= */
+
+    .options {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .option {
+      width: 100%;
+
+      min-height: 52px;
+
+      padding: 12px 17px;
+
+      border: 1.5px solid rgba(103,6,38,0.13);
+
+      border-radius: 8px;
+
+      background: var(--white);
+
+      color: var(--claret);
+
+      font-family: "Kanit", sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 300;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .option:hover {
+      transform: translateX(5px);
+
+      border-color: rgba(103,6,38,0.35);
+
+      box-shadow:
+        0 7px 18px rgba(103,6,38,0.08);
+    }
+
+    .option.correct {
+      background: #f8e7eb;
+
+      border-color: var(--claret);
+
+      transform: scale(1.02);
+    }
+
+    .option.wrong {
+      opacity: 0.45;
+
+      border-color: rgba(103,6,38,0.1);
+    }
+
+    .option.disabled {
+      cursor: default;
+
+      pointer-events: none;
+    }
+
+    /* =========================
+       FEEDBACK
+    ========================= */
+
+    .feedback {
+      min-height: 35px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      margin-top: 18px;
+
+      font-family: "Itim", cursive;
+
+      font-size: 18px;
+
+      opacity: 0;
+
+      transform: translateY(5px);
+
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .feedback.show {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESULT
+    ========================= */
+
+    .result {
+      display: none;
+
+      text-align: center;
+
+      animation: fadeUp 0.7s ease;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .result-heart {
+      font-family: "Itim", cursive;
+
+      font-size: 54px;
+
+      margin-bottom: 7px;
+    }
+
+    .result-title {
+      font-family: "Itim", cursive;
+
+      font-size: 39px;
+
+      margin-bottom: 10px;
+    }
+
+    .result-score {
+      font-size: 12px;
+
+      letter-spacing: 2px;
+
+      color: rgba(103,6,38,0.55);
+
+      margin-bottom: 22px;
+    }
+
+    .result-message {
+      font-size: 14px;
+
+      font-weight: 300;
+
+      line-height: 2;
+
+      color: rgba(103,6,38,0.75);
+
+      margin-bottom: 25px;
+    }
+
+    .next-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-width: 190px;
+
+      padding: 13px 25px;
+
+      border-radius: 999px;
+
+      background: var(--claret);
+
+      color: var(--cream);
+
+      text-decoration: none;
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      box-shadow:
+        0 10px 25px rgba(103,6,38,0.2);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .next-button:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 30px rgba(103,6,38,0.25);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      margin-top: 25px;
+
+      font-family: "Itim", cursive;
+
+      font-size: 15px;
+
+      color: rgba(103,6,38,0.42);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-6px);
+      }
+
+      50% {
+        transform: translateX(6px);
+      }
+
+      75% {
+        transform: translateX(-4px);
+      }
+    }
+
+    .shake {
+      animation: shake 0.35s ease;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 520px) {
+
+      .page {
+        padding: 35px 15px 50px;
+      }
+
+      .quiz-card {
+        padding: 28px 20px 25px;
+      }
+
+      .question {
+        font-size: 28px;
+      }
+
+      .option {
+        min-height: 50px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <main class="story-page quiz-page">
+  <div class="heart one">♡</div>
+  <div class="heart two">♡</div>
+  <div class="heart three">♡</div>
+  <div class="heart four">♡</div>
 
-    <div class="story-inner">
 
-      <div class="story-header">
-        <div class="chapter-label">
-          CHAPTER 02
-        </div>
+  <main class="page">
 
-        <h1 class="story-title">
-          Couple Quiz
-        </h1>
+    <!-- HEADER -->
 
-        <p class="story-intro">
-          มาดูกันว่าเรารู้จักกันดีแค่ไหน ♡
-        </p>
+    <header class="header">
+
+      <div class="chapter">
+        CHAPTER 02
       </div>
 
+      <h1 class="title">
+        A Little Quiz ♡
+      </h1>
 
-      <!-- QUESTION 1 -->
-      <section class="quiz-card active" data-question="1">
+      <p class="subtitle">
+        how well do you remember us?
+      </p>
 
-        <div class="quiz-number">
-          01 / 05
-        </div>
+    </header>
 
-        <h2>
-          เดตในฝันของเราคือแบบไหน?
-        </h2>
 
-        <div class="quiz-options">
+    <!-- QUIZ -->
 
-          <button class="quiz-option" data-correct="false">
-            ดูหนังอยู่บ้านด้วยกัน
-          </button>
+    <section class="quiz-card">
 
-          <button class="quiz-option" data-correct="true">
-            ไปเที่ยวทะเลด้วยกัน
-          </button>
+      <div id="quiz">
 
-          <button class="quiz-option" data-correct="false">
-            เดินเล่นในเมือง
-          </button>
+        <div class="progress-row">
 
-          <button class="quiz-option" data-correct="false">
-            ไปกินร้านอาหารหรู ๆ
-          </button>
+          <div class="progress-text">
+            QUESTION <span id="currentNumber">1</span> / 5
+          </div>
+
+          <div class="score">
+            SCORE <span id="score">0</span>
+          </div>
 
         </div>
 
-        <p class="quiz-result"></p>
 
-      </section>
+        <div class="progress-bar">
 
-
-      <!-- QUESTION 2 -->
-      <section class="quiz-card" data-question="2">
-
-        <div class="quiz-number">
-          02 / 05
-        </div>
-
-        <h2>
-          สิ่งไหนที่ทำให้เรายิ้มได้ง่ายที่สุด?
-        </h2>
-
-        <div class="quiz-options">
-
-          <button class="quiz-option" data-correct="true">
-            ข้อความจากเธอ
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            ของกินอร่อย ๆ
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            เงิน
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            วันหยุด
-          </button>
+          <div
+            class="progress-fill"
+            id="progressFill">
+          </div>
 
         </div>
 
-        <p class="quiz-result"></p>
 
-      </section>
-
-
-      <!-- QUESTION 3 -->
-      <section class="quiz-card" data-question="3">
-
-        <div class="quiz-number">
-          03 / 05
-        </div>
-
-        <h2>
-          ถ้าเราได้ไปเที่ยวด้วยกัน สิ่งแรกที่อยากทำคืออะไร?
-        </h2>
-
-        <div class="quiz-options">
-
-          <button class="quiz-option" data-correct="false">
-            นอนพักที่โรงแรม
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            ถ่ายรูป
-          </button>
-
-          <button class="quiz-option" data-correct="true">
-            ไปหาอะไรกินด้วยกัน
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            ซื้อของฝาก
-          </button>
-
-        </div>
-
-        <p class="quiz-result"></p>
-
-      </section>
-
-
-      <!-- QUESTION 4 -->
-      <section class="quiz-card" data-question="4">
-
-        <div class="quiz-number">
-          04 / 05
-        </div>
-
-        <h2>
-          เวลาที่คิดถึงกัน เรามักจะทำอะไร?
-        </h2>
-
-        <div class="quiz-options">
-
-          <button class="quiz-option" data-correct="false">
-            เงียบไปเลย
-          </button>
-
-          <button class="quiz-option" data-correct="true">
-            ทักไปหาอีกคน
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            เล่นเกม
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            นอนหลับ
-          </button>
-
-        </div>
-
-        <p class="quiz-result"></p>
-
-      </section>
-
-
-      <!-- QUESTION 5 -->
-      <section class="quiz-card" data-question="5">
-
-        <div class="quiz-number">
-          05 / 05
-        </div>
-
-        <h2>
-          แล้วสิ่งที่สำคัญที่สุดสำหรับเราคืออะไร?
-        </h2>
-
-        <div class="quiz-options">
-
-          <button class="quiz-option" data-correct="false">
-            ของขวัญ
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            เงิน
-          </button>
-
-          <button class="quiz-option" data-correct="false">
-            เวลา
-          </button>
-
-          <button class="quiz-option" data-correct="true">
-            การมีกันและกัน
-          </button>
-
-        </div>
-
-        <p class="quiz-result"></p>
-
-      </section>
-
-
-      <!-- FINAL SCORE -->
-      <section class="quiz-complete">
-
-        <div class="complete-heart">
+        <div class="question-number">
           ♡
         </div>
 
-        <div class="chapter-label">
-          OUR LITTLE TEST
-        </div>
-
-        <h2>
-          You know me.
-          <br>
-          You know us.
+        <h2
+          class="question"
+          id="question">
         </h2>
 
-        <p class="final-score">
-          ได้คะแนน <span id="score">0</span> / 5
-        </p>
 
-        <p class="complete-text">
-          ต่อให้คำตอบจะไม่เหมือนกันทุกข้อ<br>
-          อย่างน้อยเราก็ยังเลือกที่จะอยู่ข้างกัน ♡
-        </p>
-
-        <a href="puzzle.html" class="story-continue">
-          NEXT MEMORY →
-        </a>
-
-      </section>
+        <div
+          class="options"
+          id="options">
+        </div>
 
 
-      <div class="story-footer">
-        <span>02</span>
-        <span>♡</span>
+        <div
+          class="feedback"
+          id="feedback">
+        </div>
+
       </div>
 
+
+      <!-- RESULT -->
+
+      <div
+        class="result"
+        id="result">
+
+        <div class="result-heart">
+          ♡
+        </div>
+
+        <h2 class="result-title">
+          You Remember Us
+        </h2>
+
+        <div class="result-score">
+          SCORE <span id="finalScore">0</span> / 5
+        </div>
+
+        <p class="result-message">
+          ไม่ว่าจะจำได้ทุกข้อหรือไม่<br>
+          สิ่งที่สำคัญที่สุดคือ<br>
+          ฉันยังอยากสร้างความทรงจำกับเธออีกเยอะ ๆ
+        </p>
+
+        <a
+          href="puzzle.html"
+          class="next-button">
+          NEXT CHAPTER →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <div class="footer">
+      one little memory at a time ♡
     </div>
 
   </main>
@@ -255,88 +648,236 @@
 
   <script>
 
-    const questions = document.querySelectorAll(".quiz-card");
-    const completePage = document.querySelector(".quiz-complete");
+    const questions = [
+
+      {
+        question: "เราเริ่มต้นเรื่องราวของเราวันไหน?",
+        options: [
+          "08 October 2025",
+          "08 August 2025",
+          "17 August 2025",
+          "10 October 2025"
+        ],
+        answer: 0
+      },
+
+      {
+        question: "อะไรคือสิ่งที่ฉันอยากทำกับเธอมากที่สุด?",
+        options: [
+          "เที่ยวด้วยกัน",
+          "สร้างความทรงจำด้วยกัน",
+          "ดูหนังทั้งวัน",
+          "กินของอร่อย"
+        ],
+        answer: 1
+      },
+
+      {
+        question: "ถ้าเราได้อยู่ด้วยกันหนึ่งวัน ฉันอยากให้วันนั้นเป็นแบบไหน?",
+        options: [
+          "อยู่บ้านด้วยกัน",
+          "ไปทะเล",
+          "เดินเล่นและกินของอร่อย",
+          "ทั้งหมดที่กล่าวมา"
+        ],
+        answer: 3
+      },
+
+      {
+        question: "สิ่งหนึ่งที่ฉันอยากให้เธอรู้เสมอคืออะไร?",
+        options: [
+          "ฉันคิดถึงเธอ",
+          "ฉันรักเธอ",
+          "ฉันยังเลือกเธอ",
+          "ทุกข้อเลย"
+        ],
+        answer: 3
+      },
+
+      {
+        question: "แล้วถ้าให้เลือกอีกครั้ง ฉันจะเลือกอะไร?",
+        options: [
+          "เลือกตัวเอง",
+          "เลือกอยู่คนเดียว",
+          "เลือกเธออีกครั้ง",
+          "เลือกไม่ตอบ"
+        ],
+        answer: 2
+      }
+
+    ];
+
 
     let currentQuestion = 0;
     let score = 0;
+    let answered = false;
 
-    questions.forEach((question, questionIndex) => {
 
-      const options = question.querySelectorAll(".quiz-option");
-      const result = question.querySelector(".quiz-result");
+    const questionElement =
+      document.getElementById("question");
 
-      options.forEach(option => {
+    const optionsElement =
+      document.getElementById("options");
 
-        option.addEventListener("click", () => {
+    const feedbackElement =
+      document.getElementById("feedback");
 
-          if (question.classList.contains("answered")) {
-            return;
-          }
+    const currentNumberElement =
+      document.getElementById("currentNumber");
 
-          question.classList.add("answered");
+    const scoreElement =
+      document.getElementById("score");
 
-          const isCorrect =
-            option.dataset.correct === "true";
+    const progressFill =
+      document.getElementById("progressFill");
 
-          options.forEach(button => {
-            button.disabled = true;
-          });
+    const quizElement =
+      document.getElementById("quiz");
 
-          if (isCorrect) {
+    const resultElement =
+      document.getElementById("result");
 
-            score++;
+    const finalScoreElement =
+      document.getElementById("finalScore");
 
-            option.classList.add("correct");
 
-            result.textContent = "ถูกต้อง ♡";
+    function loadQuestion() {
 
-          } else {
+      answered = false;
 
-            option.classList.add("wrong");
+      feedbackElement.classList.remove("show");
 
-            result.textContent = "เกือบแล้ว ♡";
+      feedbackElement.textContent = "";
 
-            options.forEach(button => {
+      const question =
+        questions[currentQuestion];
 
-              if (button.dataset.correct === "true") {
-                button.classList.add("correct");
-              }
+      currentNumberElement.textContent =
+        currentQuestion + 1;
 
-            });
+      questionElement.textContent =
+        question.question;
 
-          }
+      scoreElement.textContent =
+        score;
 
-          setTimeout(() => {
+      progressFill.style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
 
-            question.classList.remove("active");
 
-            currentQuestion++;
+      optionsElement.innerHTML = "";
 
-            if (currentQuestion < questions.length) {
 
-              questions[currentQuestion].classList.add("active");
+      question.options.forEach(
+        (option, index) => {
 
-            } else {
+          const button =
+            document.createElement("button");
 
-              document.getElementById("score").textContent = score;
+          button.className = "option";
 
-              completePage.classList.add("show");
+          button.textContent = option;
 
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-              });
+          button.onclick = () => {
+            selectAnswer(index, button);
+          };
 
-            }
+          optionsElement.appendChild(button);
 
-          }, 900);
+        }
+      );
+    }
 
-        });
 
+    function selectAnswer(index, button) {
+
+      if (answered) {
+        return;
+      }
+
+      answered = true;
+
+
+      const question =
+        questions[currentQuestion];
+
+
+      const allButtons =
+        document.querySelectorAll(".option");
+
+
+      allButtons.forEach(btn => {
+        btn.classList.add("disabled");
       });
 
-    });
+
+      if (index === question.answer) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        scoreElement.textContent =
+          score;
+
+        feedbackElement.textContent =
+          "ถูกต้อง ♡ ฉันจำได้เหมือนกัน";
+
+      } else {
+
+        button.classList.add("wrong");
+
+        allButtons[
+          question.answer
+        ].classList.add("correct");
+
+        quizElement.classList.add("shake");
+
+        setTimeout(() => {
+          quizElement.classList.remove("shake");
+        }, 400);
+
+        feedbackElement.textContent =
+          "ไม่เป็นไรนะ ♡ ยังมีเรื่องของเราอีกเยอะ";
+      }
+
+
+      feedbackElement.classList.add("show");
+
+
+      setTimeout(() => {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+
+          loadQuestion();
+
+        } else {
+
+          showResult();
+
+        }
+
+      }, 1100);
+
+    }
+
+
+    function showResult() {
+
+      quizElement.style.display =
+        "none";
+
+      resultElement.classList.add("show");
+
+      finalScoreElement.textContent =
+        score;
+
+    }
+
+
+    loadQuestion();
 
   </script>
 
