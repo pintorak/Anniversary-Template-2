@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Song | Our Anniversary</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="story-page song-page">
+
+    <div class="story-inner">
+
+      <div class="story-header">
+
+        <div class="chapter-label">
+          CHAPTER 04
+        </div>
+
+        <h1 class="story-title">
+          Our Song
+        </h1>
+
+        <p class="story-intro">
+          เพลงหนึ่งเพลง อาจเก็บความรู้สึกของเราไว้ได้มากกว่าที่คิด ♡
+        </p>
+
+      </div>
+
+
+      <!-- SONG HERO -->
+      <section class="song-card">
+
+        <div class="album-art">
+
+          <div class="album-glow"></div>
+
+          <div class="vinyl">
+            <div class="vinyl-center">
+              ♡
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="song-info">
+
+          <span class="song-label">
+            OUR SPECIAL SONG
+          </span>
+
+          <h2>
+            The Song That Feels Like Us
+          </h2>
+
+          <p class="song-artist">
+            Our little soundtrack
+          </p>
+
+        </div>
+
+
+        <!-- AUDIO -->
+        <div class="audio-player">
+
+          <button
+            class="play-button"
+            id="playButton"
+            aria-label="Play song"
+          >
+            ▶
+          </button>
+
+          <div class="audio-content">
+
+            <div class="audio-top">
+
+              <span id="currentTime">
+                0:00
+              </span>
+
+              <span id="duration">
+                0:00
+              </span>
+
+            </div>
+
+            <input
+              type="range"
+              id="progress"
+              value="0"
+              min="0"
+              max="100"
+            >
+
+          </div>
+
+        </div>
+
+
+        <p class="song-note">
+          ใส่เพลงของเราที่นี่ได้ภายหลัง ♡
+        </p>
+
+      </section>
+
+
+      <!-- LYRICS / MESSAGE -->
+      <section class="song-message">
+
+        <div class="chapter-label">
+          A LITTLE NOTE
+        </div>
+
+        <h2>
+          If our love had a soundtrack...
+        </h2>
+
+        <p>
+          ก็คงเป็นเพลงที่ทำให้เรานึกถึงกัน
+          แม้ในวันที่ไม่ได้อยู่ข้างกัน
+        </p>
+
+        <p>
+          ทุกครั้งที่เพลงนี้ดังขึ้น
+          ขอให้รู้ไว้ว่ามีใครบางคน
+          กำลังคิดถึงเธออยู่เหมือนกัน
+        </p>
+
+        <div class="music-lines">
+          <span>♡</span>
+          <span>♪</span>
+          <span>♡</span>
+        </div>
+
+      </section>
+
+
+      <!-- NEXT -->
+      <section class="song-next">
+
+        <p>
+          Ready for something more personal?
+        </p>
+
+        <a href="letter.html" class="story-continue">
+          LOVE LETTER →
+        </a>
+
+      </section>
+
+
+      <div class="story-footer">
+        <span>04</span>
+        <span>♡</span>
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    /*
+      เพลงจริงสามารถใส่ภายหลังได้ที่:
+      audio/our-song.mp3
+
+      ตอนนี้หน้านี้ทำ UI ไว้ก่อน
+    */
+
+    const playButton =
+      document.getElementById("playButton");
+
+    const progress =
+      document.getElementById("progress");
+
+    const currentTime =
+      document.getElementById("currentTime");
+
+    const duration =
+      document.getElementById("duration");
+
+
+    let audio = null;
+
+
+    function formatTime(seconds) {
+
+      if (!seconds || isNaN(seconds)) {
+        return "0:00";
+      }
+
+      const minutes =
+        Math.floor(seconds / 60);
+
+      const remainingSeconds =
+        Math.floor(seconds % 60);
+
+      return (
+        minutes +
+        ":" +
+        String(remainingSeconds).padStart(2, "0")
+      );
+
+    }
+
+
+    /*
+      เมื่อมีไฟล์เพลงจริง
+      ให้เอา comment นี้ออกแล้วใช้:
+
+      audio = new Audio("audio/our-song.mp3");
+    */
+
+
+    playButton.addEventListener("click", () => {
+
+      if (!audio) {
+
+        playButton.classList.add("pressed");
+
+        setTimeout(() => {
+          playButton.classList.remove("pressed");
+        }, 250);
+
+        return;
+
+      }
+
+      if (audio.paused) {
+
+        audio.play();
+
+        playButton.textContent = "Ⅱ";
+
+      } else {
+
+        audio.pause();
+
+        playButton.textContent = "▶";
+
+      }
+
+    });
+
+
+    progress.addEventListener("input", () => {
+
+      if (!audio || !audio.duration) {
+        return;
+      }
+
+      audio.currentTime =
+        (progress.value / 100) *
+        audio.duration;
+
+    });
+
+
+    if (audio) {
+
+      audio.addEventListener("loadedmetadata", () => {
+
+        duration.textContent =
+          formatTime(audio.duration);
+
+      });
+
+
+      audio.addEventListener("timeupdate", () => {
+
+        currentTime.textContent =
+          formatTime(audio.currentTime);
+
+        progress.value =
+          (audio.currentTime / audio.duration) * 100;
+
+      });
+
+
+      audio.addEventListener("ended", () => {
+
+        playButton.textContent = "▶";
+
+        progress.value = 0;
+
+        currentTime.textContent = "0:00";
+
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
