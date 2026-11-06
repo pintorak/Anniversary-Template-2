@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>จดหมายถึงเธอ ♡</title>
+<title>My Letter ♡</title>
 
 <style>
 
@@ -50,20 +50,12 @@ body{
   overflow-x:hidden;
 }
 
-/* =========================
-   PAGE
-========================= */
-
 .page{
   width:100%;
   max-width:520px;
   margin:0 auto;
   padding:55px 20px 80px;
 }
-
-/* =========================
-   CHAPTER
-========================= */
 
 .chapter{
   text-align:center;
@@ -72,10 +64,6 @@ body{
   letter-spacing:4px;
   margin-bottom:18px;
 }
-
-/* =========================
-   TITLE
-========================= */
 
 h1{
   text-align:center;
@@ -91,119 +79,68 @@ h1{
   letter-spacing:-1px;
 }
 
-/* =========================
-   SUBTITLE
-========================= */
-
 .subtitle{
   text-align:center;
-
   margin-top:15px;
-
   font-size:12px;
   line-height:1.8;
   letter-spacing:.5px;
-
   opacity:.72;
 }
 
-/* =========================
-   LETTER CARD
-========================= */
-
 .letter{
   position:relative;
-
   margin-top:38px;
-
   background:var(--cream);
-
   border-radius:20px;
-
   padding:32px 28px 35px;
-
-  box-shadow:
-    0 18px 45px rgba(103,6,38,.15);
-
+  box-shadow:0 18px 45px rgba(103,6,38,.15);
   overflow:hidden;
 }
 
-/* small heart */
-
 .letter::before{
   content:"♡";
-
   position:absolute;
-
   right:24px;
   top:20px;
-
-  font-family:
-    Georgia,
-    serif;
-
+  font-family:Georgia,serif;
   font-size:18px;
-
   opacity:.25;
 }
 
-/* soft circle */
-
 .letter::after{
   content:"";
-
   position:absolute;
-
   width:120px;
   height:120px;
-
   right:-60px;
   top:-60px;
-
   border-radius:50%;
-
   background:var(--soft);
 }
-
-/* =========================
-   LETTER HEADER
-========================= */
 
 .letter-header{
   position:relative;
   z-index:2;
-
   display:flex;
-
   justify-content:space-between;
   align-items:center;
-
   padding-bottom:20px;
   margin-bottom:28px;
-
-  border-bottom:
-    1px solid rgba(103,6,38,.12);
+  border-bottom:1px solid rgba(103,6,38,.12);
 }
 
 .label{
   font-size:9px;
-
   font-weight:700;
-
   letter-spacing:3px;
 }
 
 .date{
   font-size:9px;
-
   letter-spacing:1px;
-
   opacity:.5;
 }
-
-/* =========================
-   GREETING
-========================= */
 
 .greeting{
   position:relative;
@@ -215,13 +152,8 @@ h1{
     serif;
 
   font-size:24px;
-
   margin-bottom:24px;
 }
-
-/* =========================
-   LETTER TEXT
-========================= */
 
 .letter-text{
   position:relative;
@@ -235,9 +167,7 @@ h1{
     sans-serif;
 
   color:#542b38;
-
   font-size:15px;
-
   line-height:2;
 }
 
@@ -249,31 +179,19 @@ h1{
   margin-bottom:0;
 }
 
-/* =========================
-   SIGNATURE
-========================= */
-
 .signature{
   position:relative;
   z-index:2;
-
   margin-top:32px;
-
   padding-top:23px;
-
-  border-top:
-    1px solid rgba(103,6,38,.1);
-
+  border-top:1px solid rgba(103,6,38,.1);
   text-align:right;
 }
 
 .signature-small{
   font-size:9px;
-
   letter-spacing:2px;
-
   opacity:.5;
-
   margin-bottom:7px;
 }
 
@@ -284,37 +202,23 @@ h1{
     serif;
 
   font-size:21px;
-
   font-style:italic;
 }
 
-/* =========================
-   NEXT BUTTON
-========================= */
-
 .next-area{
   text-align:center;
-
   margin-top:30px;
 }
 
 .next{
   display:inline-block;
-
   background:var(--claret);
-
   color:#fff;
-
   text-decoration:none;
-
   padding:14px 25px;
-
   border-radius:999px;
-
   font-size:10px;
-
   font-weight:600;
-
   letter-spacing:2px;
 
   transition:
@@ -324,44 +228,23 @@ h1{
 
 .next:hover{
   transform:translateY(-2px);
-
-  box-shadow:
-    0 10px 25px rgba(103,6,38,.22);
+  box-shadow:0 10px 25px rgba(103,6,38,.22);
 }
-
-/* =========================
-   HINT
-========================= */
 
 .hint{
   margin-top:15px;
-
   font-size:9px;
-
   letter-spacing:2px;
-
   opacity:.5;
 }
 
-/* =========================
-   FLOATING HEARTS
-========================= */
-
 .heart{
   position:fixed;
-
   color:rgba(255,255,255,.75);
-
-  font-family:
-    Georgia,
-    serif;
-
+  font-family:Georgia,serif;
   font-size:15px;
-
   pointer-events:none;
-
-  animation:
-    float 5s ease-in-out infinite;
+  animation:float 5s ease-in-out infinite;
 }
 
 .heart1{
@@ -387,17 +270,12 @@ h1{
   animation-delay:.7s;
 }
 
-/* =========================
-   FLOAT ANIMATION
-========================= */
-
 @keyframes float{
 
   0%,100%{
     transform:
       translateY(0)
       rotate(0deg);
-
     opacity:.4;
   }
 
@@ -405,21 +283,15 @@ h1{
     transform:
       translateY(-13px)
       rotate(8deg);
-
     opacity:.9;
   }
 
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media(max-width:480px){
 
   .page{
-    padding:
-      45px 17px 65px;
+    padding:45px 17px 65px;
   }
 
   h1{
@@ -427,15 +299,12 @@ h1{
   }
 
   .letter{
-    padding:
-      28px 22px 32px;
-
+    padding:28px 22px 32px;
     border-radius:18px;
   }
 
   .letter-text{
     font-size:14px;
-
     line-height:1.9;
   }
 
@@ -452,10 +321,7 @@ h1{
 </style>
 </head>
 
-
 <body>
-
-<!-- FLOATING HEARTS -->
 
 <div class="heart heart1">♡</div>
 <div class="heart heart2">♡</div>
@@ -463,39 +329,23 @@ h1{
 <div class="heart heart4">♡</div>
 
 
-<!-- MAIN PAGE -->
-
 <div class="page">
 
-
-  <!-- CHAPTER -->
-
   <div class="chapter">
-    บทที่ 05
+    CHAPTER 05
   </div>
 
-
-  <!-- TITLE -->
-
   <h1>
-    จดหมาย<br>
-    ถึงเธอ ♡
+    My Letter<br>
+    To You ♡
   </h1>
-
-
-  <!-- SUBTITLE -->
 
   <div class="subtitle">
     บางความรู้สึก ก็อยากเขียนให้เธอได้อ่าน
   </div>
 
 
-  <!-- LETTER -->
-
   <div class="letter">
-
-
-    <!-- LETTER HEADER -->
 
     <div class="letter-header">
 
@@ -510,14 +360,10 @@ h1{
     </div>
 
 
-    <!-- GREETING -->
-
     <div class="greeting">
       ถึงเธอ,
     </div>
 
-
-    <!-- LETTER CONTENT -->
 
     <div class="letter-text">
 
@@ -529,7 +375,6 @@ h1{
         หรือแม้แต่วันที่เราไม่เข้าใจกันก็ตาม
       </p>
 
-
       <p>
         ตลอดเวลาที่ผ่านมา
         ฉันอาจจะไม่ได้เป็นคนรักที่สมบูรณ์แบบ
@@ -539,14 +384,12 @@ h1{
         ล้วนเป็นความรู้สึกจริง ๆ
       </p>
 
-
       <p>
         ฉันยังจำวันที่เราเริ่มต้นกันได้ดี
         และยิ่งเวลาผ่านไป
         ฉันก็ยิ่งรู้ว่าการมีเธออยู่ในชีวิต
         เป็นสิ่งที่มีความหมายกับฉันมากแค่ไหน
       </p>
-
 
       <p>
         ฉันไม่รู้ว่าอนาคตของเราจะเป็นอย่างไร
@@ -556,7 +399,6 @@ h1{
         และได้สร้างความทรงจำมากมายร่วมกัน
       </p>
 
-
       <p>
         ถ้าย้อนกลับไปได้
         ฉันก็ยังอยากเลือกพบเธออยู่ดี
@@ -564,13 +406,11 @@ h1{
         ที่เกิดขึ้นในชีวิตของฉัน
       </p>
 
-
       <p>
         ขอบคุณที่รักฉันในวันที่ฉันอาจจะรักตัวเองได้ไม่ดีพอ
         ขอบคุณที่อยู่ข้างกันในวันที่ดี
         และขอบคุณสำหรับทุกอย่างที่เธอเคยทำให้ฉัน
       </p>
-
 
       <p>
         ฉันหวังว่าไม่ว่าเราจะเดินไปทางไหน
@@ -581,11 +421,8 @@ h1{
         ด้วยรอยยิ้มเหมือนที่ฉันจะทำ
       </p>
 
-
     </div>
 
-
-    <!-- SIGNATURE -->
 
     <div class="signature">
 
@@ -599,11 +436,8 @@ h1{
 
     </div>
 
-
   </div>
 
-
-  <!-- NEXT -->
 
   <div class="next-area">
 
@@ -616,7 +450,6 @@ h1{
     </div>
 
   </div>
-
 
 </div>
 
