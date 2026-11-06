@@ -1,140 +1,571 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Put Us Together ♡</title>
+<title>Put Us Together ♡</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 35px 18px 50px;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #670626;
+
+  background-color: #ffbdc5;
+  background-image: radial-gradient(
+    circle,
+    rgba(255,255,255,0.65) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 34px 34px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.chapter {
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: clamp(34px, 10vw, 48px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  opacity: 0.6;
+  margin-bottom: 28px;
+}
+
+.card {
+  background: rgba(255,249,248,0.96);
+  border-radius: 28px;
+  padding: 25px 18px 28px;
+  box-shadow: 0 20px 55px rgba(103,6,38,0.14);
+}
+
+.instruction {
+  font-size: 11px;
+  line-height: 1.9;
+  opacity: 0.65;
+  margin-bottom: 20px;
+}
+
+/* PUZZLE */
+
+.puzzle {
+  width: min(82vw, 330px);
+  aspect-ratio: 1 / 1;
+
+  margin: 0 auto 18px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+
+  padding: 5px;
+
+  background: #670626;
+  border-radius: 16px;
+
+  box-shadow: 0 12px 30px rgba(103,6,38,0.18);
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 9px;
+
+  background: #f6e3e6;
+
+  cursor: pointer;
+}
+
+.tile:hover {
+  transform: scale(0.98);
+}
+
+.tile.empty {
+  cursor: default;
+  background: rgba(103,6,38,0.08);
+}
+
+.tile.empty:hover {
+  transform: none;
+}
+
+/*
+  ทุกชิ้นใช้รูป story-01.jpg
+  แล้วเลื่อนตำแหน่งเพื่อแบ่งเป็น 9 ช่อง
+*/
+
+.tile img {
+  position: absolute;
+
+  width: 300%;
+  height: 300%;
+
+  max-width: none;
+
+  pointer-events: none;
+}
+
+.part-0 {
+  left: 0;
+  top: 0;
+}
+
+.part-1 {
+  left: -100%;
+  top: 0;
+}
+
+.part-2 {
+  left: -200%;
+  top: 0;
+}
+
+.part-3 {
+  left: 0;
+  top: -100%;
+}
+
+.part-4 {
+  left: -100%;
+  top: -100%;
+}
+
+.part-5 {
+  left: -200%;
+  top: -100%;
+}
+
+.part-6 {
+  left: 0;
+  top: -200%;
+}
+
+.part-7 {
+  left: -100%;
+  top: -200%;
+}
+
+/* MOVES */
+
+.moves {
+  font-size: 9px;
+  letter-spacing: 3px;
+  opacity: 0.5;
+  margin-bottom: 17px;
+}
+
+.moves span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #670626;
+}
+
+/* BUTTONS */
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.shuffle {
+  border: 0;
+  background: transparent;
+
+  color: #670626;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  padding: 8px 18px;
+
+  cursor: pointer;
+}
+
+.shuffle:hover {
+  opacity: 0.6;
+}
+
+/* ยอมแพ้ */
+
+.give-up {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 145px;
+
+  padding: 11px 24px;
+
+  border: 1px solid rgba(103,6,38,0.25);
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.6);
+
+  color: #670626;
+
+  text-decoration: none;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  transition: 0.25s ease;
+}
+
+.give-up:hover {
+  background: #670626;
+  color: #fff9f8;
+
+  transform: translateY(-2px);
+}
+
+/* SUCCESS */
+
+.success {
+  display: none;
+  margin-top: 22px;
+}
+
+.success.show {
+  display: block;
+}
+
+.heart {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.success h2 {
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.success p {
+  font-size: 11px;
+  line-height: 1.9;
+  opacity: 0.65;
+  margin-bottom: 18px;
+}
+
+.continue {
+  display: inline-flex;
+  padding: 12px 25px;
+
+  border-radius: 999px;
+
+  background: #670626;
+  color: #fff9f8;
+
+  text-decoration: none;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 30px 14px 45px;
+  }
+
+  .card {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .puzzle {
+    width: min(84vw, 315px);
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="chapter">
+    CHAPTER 03
+  </div>
+
+  <h1>
+    Put Us Together ♡
+  </h1>
+
+  <div class="subtitle">
+    some things are meant to fit together
+  </div>
+
+  <div class="card">
+
+    <div class="instruction">
+      ขยับรูปทีละช่อง<br>
+      แล้วลองต่อเรื่องราวของเราให้สมบูรณ์
+    </div>
+
+    <div
+      id="puzzle"
+      class="puzzle">
+    </div>
+
+    <div class="moves">
+      MOVES ·
+      <span id="moveCount">0</span>
+    </div>
+
+    <div class="buttons">
+
+      <button
+        id="shuffleButton"
+        class="shuffle"
+        type="button">
+        SHUFFLE AGAIN ↻
+      </button>
+
+      <a
+        class="give-up"
+        href="song.html">
+        ยอมแพ้ ♡
+      </a>
+
+    </div>
+
+    <div
+      id="success"
+      class="success">
+
+      <div class="heart">
+        ♡
+      </div>
+
+      <h2>
+        We Fit Together
+      </h2>
+
+      <p>
+        ต่อให้ต้องผ่านกี่ชิ้นส่วน<br>
+        สุดท้ายเราก็ยังกลับมาอยู่ด้วยกัน
+      </p>
+
+      <a
+        class="continue"
+        href="song.html">
+        CONTINUE ♡
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+const puzzle = document.getElementById("puzzle");
+const moveCount = document.getElementById("moveCount");
+const success = document.getElementById("success");
+const shuffleButton = document.getElementById("shuffleButton");
+
+let board = [0,1,2,3,4,5,6,7,8];
+let moves = 0;
+
+/*
+  8 = ช่องว่าง
+*/
+
+const neighbors = {
+  0: [1,3],
+  1: [0,2,4],
+  2: [1,5],
+  3: [0,4,6],
+  4: [1,3,5,7],
+  5: [2,4,8],
+  6: [3,7],
+  7: [4,6,8],
+  8: [5,7]
+};
+
+
+/* สร้าง Puzzle */
+
+function renderPuzzle() {
+
+  puzzle.innerHTML = "";
+
+  for (let i = 0; i < board.length; i++) {
+
+    const value = board[i];
+
+    const tile = document.createElement("div");
+
+    tile.className = "tile";
+
+    if (value === 8) {
+
+      tile.classList.add("empty");
+
+    } else {
+
+      const image = document.createElement("img");
+
+      image.src = "story-01.jpg";
+      image.alt = "Our story";
+
+      image.className = "part-" + value;
+
+      tile.appendChild(image);
+
+      tile.addEventListener("click", function() {
+        moveTile(i);
+      });
     }
 
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
-    }
+    puzzle.appendChild(tile);
+  }
 
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-color: #ffbdc5;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.65) 1.4px, transparent 1.4px);
-      background-size: 34px 34px;
-      color: #670626;
-      font-family: Georgia, "Times New Roman", serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 35px 20px;
-      position: relative;
-    }
+  moveCount.textContent = moves;
+}
 
-    /* soft pink glow */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: rgba(255, 249, 248, 0.20);
-      top: -180px;
-      right: -150px;
-      pointer-events: none;
-    }
 
-    body::after {
-      content: "";
-      position: fixed;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      background: rgba(255, 249, 248, 0.14);
-      bottom: -180px;
-      left: -150px;
-      pointer-events: none;
-    }
+/* ขยับชิ้นส่วน */
 
-    .page {
-      width: 100%;
-      max-width: 540px;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
+function moveTile(index) {
 
-    /* floating hearts */
+  const emptyIndex = board.indexOf(8);
 
-    .heart {
-      position: fixed;
-      color: rgba(103, 6, 38, 0.25);
-      font-size: 17px;
-      animation: float 5s ease-in-out infinite;
-      pointer-events: none;
-    }
+  if (!neighbors[emptyIndex].includes(index)) {
+    return;
+  }
 
-    .heart.h1 {
-      top: 12%;
-      left: 9%;
-    }
+  const temp = board[index];
 
-    .heart.h2 {
-      top: 23%;
-      right: 9%;
-      animation-delay: 1.5s;
-    }
+  board[index] = board[emptyIndex];
+  board[emptyIndex] = temp;
 
-    .heart.h3 {
-      bottom: 17%;
-      left: 12%;
-      animation-delay: 2.5s;
-    }
+  moves++;
 
-    .heart.h4 {
-      bottom: 11%;
-      right: 12%;
-      animation-delay: 1s;
-    }
+  renderPuzzle();
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
+  checkWin();
+}
 
-      50% {
-        transform: translateY(-9px);
-      }
-    }
 
-    /* heading */
+/* ตรวจคำตอบ */
 
-    .chapter {
-      font-size: 10px;
-      letter-spacing: 4px;
-      margin-bottom: 15px;
-      opacity: 0.75;
-    }
+function checkWin() {
 
-    h1 {
-      font-size: clamp(34px, 9vw, 48px);
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
+  const isSolved = board.every(function(value, index) {
+    return value === index;
+  });
 
-    .subtitle {
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      opacity: 0.65;
-      margin-bottom: 28px;
-    }
+  if (isSolved && moves > 0) {
 
-    /* puzzle card */
+    success.classList.add("show");
 
-    .puzzle
+    shuffleButton.style.display = "none";
+
+    document.querySelector(".give-up").style.display = "none";
+  }
+}
+
+
+/* สุ่ม Puzzle */
+
+function shufflePuzzle() {
+
+  board = [0,1,2,3,4,5,6,7,8];
+
+  let previous = -1;
+
+  for (let i = 0; i < 80; i++) {
+
+    const emptyIndex = board.indexOf(8);
+
+    let choices = neighbors[emptyIndex].filter(function(index) {
+      return index !== previous;
+    });
+
+    const randomIndex =
+      choices[Math.floor(Math.random() * choices.length)];
+
+    const temp = board[randomIndex];
+
+    board[randomIndex] = board[emptyIndex];
+    board[emptyIndex] = temp;
+
+    previous = emptyIndex;
+  }
+}
+
+
+/* เริ่มเกมใหม่ */
+
+function newGame() {
+
+  moves = 0;
+
+  success.classList.remove("show");
+
+  shuffleButton.style.display = "inline-block";
+
+  document.querySelector(".give-up").style.display = "inline-flex";
+
+  shufflePuzzle();
+
+  renderPuzzle();
+}
+
+
+/* ปุ่มสุ่มใหม่ */
+
+shuffleButton.addEventListener("click", function() {
+  newGame();
+});
+
+
+/* เริ่มเกม */
+
+newGame();
+</script>
+
+</body>
+</html>
+```
