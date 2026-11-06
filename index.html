@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Our Anniversary ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="phone">
+
+      <!-- พื้นหลังชั่วคราว
+           เดี๋ยวค่อยเปลี่ยนเป็นรูปคู่ -->
+      <div class="wallpaper"></div>
+
+      <div class="screen-overlay"></div>
+
+
+      <!-- STATUS BAR -->
+      <div class="status-bar">
+
+        <span id="currentTime">
+          12:00
+        </span>
+
+        <div class="status-icons">
+          <span>⌁</span>
+          <span>⌁</span>
+          <span>▰</span>
+        </div>
+
+      </div>
+
+
+      <!-- MAIN CONTENT -->
+      <section class="content">
+
+        <div class="heart-icon">
+          ♡
+        </div>
+
+        <p class="eyebrow">
+          OUR ANNIVERSARY
+        </p>
+
+        <h1>
+          Enter Passcode
+        </h1>
+
+        <p class="subtitle">
+          unlock our little story
+        </p>
+
+
+        <!-- PASSCODE DOTS -->
+        <div
+          class="passcode-dots"
+          id="passcodeDots"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+        <!-- ERROR -->
+        <p
+          class="error-message"
+          id="errorMessage"
+        >
+          Wrong passcode. Try again ♡
+        </p>
+
+
+        <!-- KEYPAD -->
+        <div class="keypad">
+
+          <button
+            class="number-btn"
+            data-number="1"
+          >
+            <span>1</span>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="2"
+          >
+            <span>2</span>
+            <small>ABC</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="3"
+          >
+            <span>3</span>
+            <small>DEF</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="4"
+          >
+            <span>4</span>
+            <small>GHI</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="5"
+          >
+            <span>5</span>
+            <small>JKL</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="6"
+          >
+            <span>6</span>
+            <small>MNO</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="7"
+          >
+            <span>7</span>
+            <small>PQRS</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="8"
+          >
+            <span>8</span>
+            <small>TUV</small>
+          </button>
+
+
+          <button
+            class="number-btn"
+            data-number="9"
+          >
+            <span>9</span>
+            <small>WXYZ</small>
+          </button>
+
+
+          <div class="empty-key"></div>
+
+
+          <button
+            class="number-btn"
+            data-number="0"
+          >
+            <span>0</span>
+            <small>+</small>
+          </button>
+
+
+          <button
+            class="delete-btn"
+            id="deleteBtn"
+          >
+            ⌫
+          </button>
+
+        </div>
+
+
+        <!-- HINT -->
+        <div class="hint">
+
+          <span>HINT</span>
+
+          <p>
+            วันสำคัญของเรา ♡
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
