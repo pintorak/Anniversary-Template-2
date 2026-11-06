@@ -1,129 +1,610 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Memory Puzzle | Our Anniversary</title>
+  <title>Put Us Together ♡</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --claret: #670626;
+      --pink: #ffbdc5;
+      --cream: #fff9f8;
+      --soft-pink: #fdecef;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family: "Kanit", sans-serif;
+
+      color: var(--claret);
+
+      background-color: var(--pink);
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.72) 2px,
+          transparent 2.4px
+        );
+
+      background-size: 27px 27px;
+
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    .page {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 45px 20px 60px;
+
+      position: relative;
+    }
+
+    /* =========================
+       DECORATIONS
+    ========================= */
+
+    .heart {
+      position: fixed;
+
+      font-family: "Itim", cursive;
+
+      color: rgba(103,6,38,0.14);
+
+      pointer-events: none;
+    }
+
+    .heart.one {
+      top: 13%;
+      left: 8%;
+      font-size: 23px;
+      transform: rotate(-15deg);
+    }
+
+    .heart.two {
+      top: 30%;
+      right: 8%;
+      font-size: 18px;
+      transform: rotate(12deg);
+    }
+
+    .heart.three {
+      bottom: 16%;
+      left: 10%;
+      font-size: 21px;
+    }
+
+    .heart.four {
+      bottom: 9%;
+      right: 12%;
+      font-size: 25px;
+      transform: rotate(-12deg);
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      text-align: center;
+
+      margin-bottom: 25px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .chapter {
+      font-size: 10px;
+
+      letter-spacing: 4px;
+
+      margin-bottom: 8px;
+    }
+
+    .title {
+      font-family: "Itim", cursive;
+
+      font-size: clamp(44px, 10vw, 62px);
+
+      line-height: 0.95;
+
+      margin-bottom: 11px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+
+      font-weight: 300;
+
+      letter-spacing: 1px;
+
+      color: rgba(103,6,38,0.62);
+    }
+
+    /* =========================
+       GAME CARD
+    ========================= */
+
+    .game-card {
+      width: min(480px, 100%);
+
+      padding: 28px 25px 30px;
+
+      background: rgba(255,249,248,0.95);
+
+      border-radius: 8px;
+
+      box-shadow:
+        0 20px 50px rgba(103,6,38,0.14);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
+       TOP INFO
+    ========================= */
+
+    .game-top {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 20px;
+    }
+
+    .moves {
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      color: rgba(103,6,38,0.52);
+    }
+
+    .moves span {
+      color: var(--claret);
+
+      font-weight: 500;
+    }
+
+    .reset-button {
+      border: 0;
+
+      background: transparent;
+
+      color: rgba(103,6,38,0.55);
+
+      font-family: "Kanit", sans-serif;
+
+      font-size: 10px;
+
+      letter-spacing: 1px;
+
+      cursor: pointer;
+
+      padding: 5px 0;
+
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .reset-button:hover {
+      color: var(--claret);
+
+      transform: translateY(-1px);
+    }
+
+    /* =========================
+       PUZZLE BOARD
+    ========================= */
+
+    .puzzle-board {
+      width: min(360px, 100%);
+
+      aspect-ratio: 1 / 1;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      grid-template-rows:
+        repeat(3, 1fr);
+
+      gap: 6px;
+
+      padding: 6px;
+
+      background: var(--claret);
+
+      border-radius: 7px;
+
+      box-shadow:
+        0 15px 30px rgba(103,6,38,0.16);
+    }
+
+    .tile {
+      position: relative;
+
+      border: 0;
+
+      padding: 0;
+
+      margin: 0;
+
+      background: var(--soft-pink);
+
+      border-radius: 3px;
+
+      overflow: hidden;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.16s ease,
+        filter 0.16s ease;
+    }
+
+    .tile:hover {
+      transform: scale(0.97);
+
+      filter: brightness(1.03);
+    }
+
+    .tile.empty {
+      background:
+        rgba(255,249,248,0.3);
+
+      cursor: default;
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.25);
+    }
+
+    .tile.empty:hover {
+      transform: none;
+    }
+
+    .tile-image {
+      position: absolute;
+
+      width: 300%;
+
+      height: 300%;
+
+      max-width: none;
+
+      max-height: none;
+
+      object-fit: cover;
+
+      pointer-events: none;
+
+      user-select: none;
+    }
+
+    /* =========================
+       INSTRUCTIONS
+    ========================= */
+
+    .instruction {
+      margin-top: 20px;
+
+      text-align: center;
+
+      font-family: "Itim", cursive;
+
+      font-size: 20px;
+
+      color: var(--claret);
+    }
+
+    .small-text {
+      margin-top: 4px;
+
+      text-align: center;
+
+      font-size: 10px;
+
+      font-weight: 300;
+
+      letter-spacing: 0.7px;
+
+      color: rgba(103,6,38,0.52);
+    }
+
+    /* =========================
+       SUCCESS
+    ========================= */
+
+    .success {
+      display: none;
+
+      margin-top: 22px;
+
+      text-align: center;
+
+      animation: fadeUp 0.6s ease;
+    }
+
+    .success.show {
+      display: block;
+    }
+
+    .success-heart {
+      font-family: "Itim", cursive;
+
+      font-size: 48px;
+
+      line-height: 1;
+    }
+
+    .success-title {
+      font-family: "Itim", cursive;
+
+      font-size: 34px;
+
+      margin-top: 6px;
+
+      margin-bottom: 8px;
+    }
+
+    .success-text {
+      font-size: 13px;
+
+      font-weight: 300;
+
+      line-height: 1.9;
+
+      color: rgba(103,6,38,0.72);
+
+      margin-bottom: 20px;
+    }
+
+    .next-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-width: 190px;
+
+      padding: 13px 25px;
+
+      border-radius: 999px;
+
+      background: var(--claret);
+
+      color: var(--cream);
+
+      text-decoration: none;
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      box-shadow:
+        0 10px 25px rgba(103,6,38,0.2);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .next-button:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 30px rgba(103,6,38,0.25);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      margin-top: 25px;
+
+      font-family: "Itim", cursive;
+
+      font-size: 15px;
+
+      color: rgba(103,6,38,0.42);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0.96);
+      }
+
+      60% {
+        transform: scale(1.03);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .complete-pop {
+      animation: pop 0.45s ease;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 500px) {
+
+      .page {
+        padding: 35px 15px 50px;
+      }
+
+      .game-card {
+        padding: 25px 18px 28px;
+      }
+
+      .puzzle-board {
+        gap: 5px;
+
+        padding: 5px;
+      }
+
+      .instruction {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <main class="story-page puzzle-page">
+  <div class="heart one">♡</div>
+  <div class="heart two">♡</div>
+  <div class="heart three">♡</div>
+  <div class="heart four">♡</div>
 
-    <div class="story-inner">
 
-      <div class="story-header">
+  <main class="page">
 
-        <div class="chapter-label">
-          CHAPTER 03
+    <!-- HEADER -->
+
+    <header class="header">
+
+      <div class="chapter">
+        CHAPTER 03
+      </div>
+
+      <h1 class="title">
+        Put Us Together ♡
+      </h1>
+
+      <p class="subtitle">
+        some things are meant to fit together
+      </p>
+
+    </header>
+
+
+    <!-- GAME -->
+
+    <section class="game-card">
+
+      <div id="gameArea">
+
+        <div class="game-top">
+
+          <div class="moves">
+            MOVES
+            <span id="moveCount">0</span>
+          </div>
+
+          <button
+            class="reset-button"
+            onclick="newGame()">
+            SHUFFLE AGAIN ↻
+          </button>
+
         </div>
 
-        <h1 class="story-title">
-          Memory Puzzle
-        </h1>
 
-        <p class="story-intro">
-          ค่อย ๆ ต่อชิ้นส่วนความทรงจำของเราเข้าด้วยกัน ♡
-        </p>
+        <div
+          class="puzzle-board"
+          id="puzzleBoard">
+        </div>
+
+
+        <div class="instruction">
+          Put us back together ♡
+        </div>
+
+        <div class="small-text">
+          tap a piece next to the empty space
+        </div>
 
       </div>
 
 
-      <!-- PUZZLE -->
-      <section class="puzzle-card">
-
-        <div class="puzzle-top">
-
-          <div>
-            <span class="puzzle-label">
-              OUR MEMORY
-            </span>
-
-            <h2>
-              Find the pieces
-            </h2>
-          </div>
-
-          <div class="puzzle-counter">
-            <span id="moves">0</span> moves
-          </div>
-
-        </div>
-
-
-        <div class="puzzle-board" id="puzzleBoard">
-
-          <button class="puzzle-piece" data-index="0"></button>
-          <button class="puzzle-piece" data-index="1"></button>
-          <button class="puzzle-piece" data-index="2"></button>
-
-          <button class="puzzle-piece" data-index="3"></button>
-          <button class="puzzle-piece" data-index="4"></button>
-          <button class="puzzle-piece" data-index="5"></button>
-
-          <button class="puzzle-piece" data-index="6"></button>
-          <button class="puzzle-piece" data-index="7"></button>
-          <button class="puzzle-piece empty" data-index="8"></button>
-
-        </div>
-
-
-        <p class="puzzle-note">
-          แตะชิ้นส่วนข้างช่องว่างเพื่อเลื่อนมัน ♡
-        </p>
-
-      </section>
-
-
       <!-- SUCCESS -->
-      <section class="puzzle-success" id="puzzleSuccess">
+
+      <div
+        class="success"
+        id="success">
 
         <div class="success-heart">
           ♡
         </div>
 
-        <div class="chapter-label">
-          MEMORY FOUND
-        </div>
-
-        <h2>
-          You found us.
+        <h2 class="success-title">
+          We Fit Together
         </h2>
 
-        <p>
-          ความทรงจำบางอย่างอาจต้องใช้เวลา<br>
-          แต่สุดท้ายมันก็กลับมาอยู่ในที่ของมันเสมอ
+        <p class="success-text">
+          บางอย่างอาจต้องใช้เวลา<br>
+          แต่สุดท้ายมันก็กลับมาอยู่ในที่ของมัน
         </p>
 
-        <div class="memory-message">
-          <span>
-            ONE MEMORY
-          </span>
-
-          <strong>
-            TWO HEARTS
-          </strong>
-
-          <span>
-            ONE STORY
-          </span>
-        </div>
-
-        <a href="song.html" class="story-continue">
-          OUR SONG →
+        <a
+          href="song.html"
+          class="next-button">
+          NEXT CHAPTER →
         </a>
 
-      </section>
-
-
-      <div class="story-footer">
-        <span>03</span>
-        <span>♡</span>
       </div>
 
+    </section>
+
+
+    <div class="footer">
+      one piece at a time ♡
     </div>
 
   </main>
@@ -131,198 +612,335 @@
 
   <script>
 
-    const board = document.getElementById("puzzleBoard");
-    const pieces = Array.from(
-      document.querySelectorAll(".puzzle-piece")
-    );
+    const board =
+      document.getElementById("puzzleBoard");
 
-    const movesDisplay = document.getElementById("moves");
-    const success = document.getElementById("puzzleSuccess");
+    const moveCount =
+      document.getElementById("moveCount");
+
+    const success =
+      document.getElementById("success");
+
+    const gameArea =
+      document.getElementById("gameArea");
+
+
+    let tiles = [];
 
     let moves = 0;
 
-    /*
-      Puzzle layout
 
+    /*
+      ตำแหน่งของชิ้นส่วน
       0 1 2
       3 4 5
       6 7 8
 
-      8 = empty
+      เลข 8 คือช่องว่าง
     */
 
-    let puzzle = [
-      0, 1, 2,
-      3, 4, 5,
-      6, 7, 8
-    ];
+    const solved =
+      [0,1,2,3,4,5,6,7,8];
 
 
-    function renderPuzzle() {
+    /* =========================
+       CREATE BOARD
+    ========================= */
 
-      pieces.forEach((piece, index) => {
+    function createBoard() {
 
-        const value = puzzle[index];
+      board.innerHTML = "";
 
-        if (value === 8) {
+      tiles.forEach((tile, index) => {
 
-          piece.classList.add("empty");
-          piece.textContent = "";
+        const button =
+          document.createElement("button");
+
+        button.className = "tile";
+
+        if (tile === 8) {
+
+          button.classList.add("empty");
 
         } else {
 
-          piece.classList.remove("empty");
+          const image =
+            document.createElement("img");
 
-          piece.innerHTML = `
-            <span>${value + 1}</span>
-          `;
+          image.className =
+            "tile-image";
+
+          image.src =
+            "story-01.jpg";
+
+          image.alt =
+            "Puzzle piece";
+
+          /*
+            ทำให้รูปทั้งรูปถูกแบ่งเป็น 3x3
+          */
+
+          const row =
+            Math.floor(tile / 3);
+
+          const col =
+            tile % 3;
+
+
+          image.style.left =
+            (-col * 100) + "%";
+
+          image.style.top =
+            (-row * 100) + "%";
+
+
+          button.appendChild(image);
 
         }
+
+
+        button.addEventListener(
+          "click",
+          () => moveTile(index)
+        );
+
+
+        board.appendChild(button);
 
       });
 
     }
 
 
+    /* =========================
+       CHECK MOVEMENT
+    ========================= */
+
     function isAdjacent(index1, index2) {
 
-      const row1 = Math.floor(index1 / 3);
-      const col1 = index1 % 3;
+      const row1 =
+        Math.floor(index1 / 3);
 
-      const row2 = Math.floor(index2 / 3);
-      const col2 = index2 % 3;
+      const col1 =
+        index1 % 3;
 
-      const rowDifference =
+      const row2 =
+        Math.floor(index2 / 3);
+
+      const col2 =
+        index2 % 3;
+
+
+      const rowDistance =
         Math.abs(row1 - row2);
 
-      const colDifference =
+      const colDistance =
         Math.abs(col1 - col2);
 
+
       return (
-        rowDifference + colDifference === 1
+        rowDistance + colDistance === 1
       );
 
     }
 
 
-    function movePiece(index) {
+    /* =========================
+       MOVE TILE
+    ========================= */
+
+    function moveTile(index) {
+
+      if (tiles[index] === 8) {
+        return;
+      }
+
 
       const emptyIndex =
-        puzzle.indexOf(8);
+        tiles.indexOf(8);
+
 
       if (!isAdjacent(index, emptyIndex)) {
         return;
       }
 
+
       [
-        puzzle[index],
-        puzzle[emptyIndex]
+        tiles[index],
+        tiles[emptyIndex]
       ] = [
-        puzzle[emptyIndex],
-        puzzle[index]
+        tiles[emptyIndex],
+        tiles[index]
       ];
+
 
       moves++;
 
-      movesDisplay.textContent = moves;
+      moveCount.textContent =
+        moves;
 
-      renderPuzzle();
 
-      checkComplete();
+      createBoard();
+
+
+      checkSolved();
 
     }
 
 
-    function checkComplete() {
+    /* =========================
+       CHECK SOLVED
+    ========================= */
+
+    function checkSolved() {
 
       const complete =
-        puzzle.every((value, index) => {
+        tiles.every(
+          (value, index) =>
+            value === solved[index]
+        );
 
-          return value === index;
-
-        });
 
       if (complete) {
 
+        board.classList.add(
+          "complete-pop"
+        );
+
         setTimeout(() => {
 
-          success.classList.add("show");
+          success.classList.add(
+            "show"
+          );
 
-          success.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }, 500);
+        }, 350);
 
       }
 
     }
 
 
-    pieces.forEach((piece, index) => {
+    /* =========================
+       SHUFFLE
+    ========================= */
 
-      piece.addEventListener("click", () => {
+    function shuffleBoard() {
 
-        movePiece(index);
+      tiles =
+        [...solved];
 
-      });
+      let empty =
+        8;
 
-    });
+
+      /*
+        สลับด้วยการเดินช่องว่างจริง ๆ
+        เพื่อให้ puzzle ที่ได้แก้ได้แน่นอน
+      */
+
+      for (let i = 0; i < 120; i++) {
+
+        const possible = [];
 
 
-    /*
-      Shuffle the puzzle while making sure
-      the puzzle remains solvable.
-    */
+        const row =
+          Math.floor(empty / 3);
 
-    function shufflePuzzle() {
+        const col =
+          empty % 3;
 
-      let emptyIndex = 8;
 
-      for (let i = 0; i < 40; i++) {
-
-        const possibleMoves = [];
-
-        for (let j = 0; j < 9; j++) {
-
-          if (isAdjacent(j, emptyIndex)) {
-            possibleMoves.push(j);
-          }
-
+        if (row > 0) {
+          possible.push(empty - 3);
         }
 
+        if (row < 2) {
+          possible.push(empty + 3);
+        }
+
+        if (col > 0) {
+          possible.push(empty - 1);
+        }
+
+        if (col < 2) {
+          possible.push(empty + 1);
+        }
+
+
         const randomIndex =
-          possibleMoves[
+          possible[
             Math.floor(
-              Math.random() * possibleMoves.length
+              Math.random() *
+              possible.length
             )
           ];
 
+
         [
-          puzzle[randomIndex],
-          puzzle[emptyIndex]
+          tiles[empty],
+          tiles[randomIndex]
         ] = [
-          puzzle[emptyIndex],
-          puzzle[randomIndex]
+          tiles[randomIndex],
+          tiles[empty]
         ];
 
-        emptyIndex = randomIndex;
+
+        empty =
+          randomIndex;
 
       }
 
-      moves = 0;
 
-      movesDisplay.textContent = "0";
+      /*
+        กันไม่ให้สุ่มออกมาเป็นภาพสำเร็จ
+      */
 
-      renderPuzzle();
+      if (
+        tiles.every(
+          (value, index) =>
+            value === solved[index]
+        )
+      ) {
+
+        shuffleBoard();
+
+        return;
+
+      }
 
     }
 
 
-    renderPuzzle();
+    /* =========================
+       NEW GAME
+    ========================= */
 
-    shufflePuzzle();
+    function newGame() {
+
+      moves = 0;
+
+      moveCount.textContent =
+        "0";
+
+      success.classList.remove(
+        "show"
+      );
+
+      board.classList.remove(
+        "complete-pop"
+      );
+
+      gameArea.style.display =
+        "block";
+
+      shuffleBoard();
+
+      createBoard();
+
+    }
+
+
+    newGame();
 
   </script>
 
