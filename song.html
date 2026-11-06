@@ -1,120 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Song ♡</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Song ♡</title>
 
-  <style>
-    :root {
-      --claret: #670626;
-      --pink: #FFBDC5;
-      --cream: #FFF9F8;
-      --soft: #FDECEF;
-      --white: #FFFFFF;
-    }
+<style>
+:root {
+  --claret: #670626;
+  --pink: #FFBDC5;
+  --cream: #FFF9F8;
+  --soft: #FDECEF;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
 
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+body {
+  min-height: 100vh;
+  background-color: var(--pink);
 
-      color: var(--claret);
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.55) 1.4px,
+      transparent 1.5px
+    );
 
-      background-color: var(--pink);
+  background-size: 34px 34px;
 
-      background-image:
-        radial-gradient(
-          rgba(255,255,255,.62) 1.4px,
-          transparent 1.4px
-        );
+  color: var(--claret);
 
-      background-size: 34px 34px;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-      padding: 28px 18px;
-    }
+  padding: 24px 16px;
+}
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
+.page {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
 
-    .page {
-      width: min(100%, 520px);
-      text-align: center;
-      position: relative;
-    }
+.chapter {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  opacity: .7;
+  margin-bottom: 11px;
+}
 
-    .chapter {
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-      opacity: .68;
-    }
+h1 {
+  margin: 0;
+  font-size: clamp(32px, 9vw, 48px);
+  line-height: .98;
+  font-weight: 600;
+}
 
-    h1 {
-      font-size: clamp(31px, 9vw, 48px);
-      line-height: .98;
-      font-weight: 600;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
+.subtitle {
+  margin: 12px 0 25px;
 
-    .subtitle {
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: 1.8px;
-      text-transform: lowercase;
-      opacity: .58;
-      margin-bottom: 26px;
-    }
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.6px;
 
-    /* CARD */
+  opacity: .6;
+}
 
-    .main-card {
-      width: 100%;
-      background: rgba(255,249,248,.97);
-      border-radius: 30px;
-      padding: 30px 25px 25px;
-      box-shadow:
-        0 20px 55px rgba(103,6,38,.18);
-      border: 1px solid rgba(103,6,38,.08);
-    }
+/* MAIN CARD */
 
-    /* CASSETTE */
+.card {
+  width: 100%;
 
-    .cassette-wrap {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 5px 0 27px;
-    }
+  background: var(--cream);
 
-    .cassette {
-      width: min(340px, 100%);
-      aspect-ratio: 1.7 / 1;
-      position: relative;
+  border-radius: 28px;
 
-      border-radius: 15px;
+  padding: 28px 22px 25px;
 
-      background:
-        linear-gradient(
-          145deg,
-          #7c173b 0%,
-          #670626 48%
+  box-shadow:
+    0 20px 50px rgba(103,6,38,.18);
+
+  border: 1px solid rgba(103,6,38,.08);
+}
+
+/* CASSETTE */
+
+.cassette-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  padding: 5px 0 25px;
+}
+
+.cassette {
+  position: relative;
+
+  width: 330px;
+  max-width: 100%;
+
+  aspect-ratio: 1.68 / 1;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7c173b 0%,
+      #670626 48%,
+      #50051d 100%
+    );
+
+  border: 3px solid #48051b;
+
+  box-shadow:
+    0 16px 30px rgba(103,6,38,.3),
+    inset 0 2px 0 rgba(255,255,255,.16),
+    inset 0 -8px 15px rgba(0,0,0,.14);
+
+  transform: rotate(-1.5deg);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.cassette.playing {
+  transform: rotate(0deg) translateY(-3px);
+
+  box-shadow:
+    0 22px 35px rgba(103,6,38,.34),
+    inset 0 2px 0 rgba(255,255,255,.16),
+    inset 
