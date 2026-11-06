@@ -1,20 +1,13 @@
 ```css
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Prompt:wght@400;500;600&display=swap');
 
-
 :root {
   --claret: #670626;
   --pink: #FFBDC5;
   --cream: #FFF9F8;
-  --soft-pink: #FDECEF;
   --white: #FFFFFF;
-  --text: #3b252b;
+  --soft-pink: #FDECEF;
 }
-
-
-/* =========================
-   RESET
-========================= */
 
 * {
   box-sizing: border-box;
@@ -22,592 +15,348 @@
   padding: 0;
 }
 
-html {
+html, body {
+  width: 100%;
   min-height: 100%;
 }
 
 body {
-  min-height: 100vh;
+  font-family: 'Prompt', sans-serif;
+  color: var(--claret);
 }
 
-
-/* =========================
-   PAGE
-========================= */
-
+/* FULL SCREEN BACKGROUND */
 .pin-page {
-  position: relative;
-
   min-height: 100vh;
   min-height: 100svh;
-
-  overflow: hidden;
-
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
 
-  background:
+  background-color: var(--pink);
+
+  /* small polka dots */
+  background-image:
     radial-gradient(
-      circle at 15% 20%,
-      rgba(255,255,255,0.7) 0 90px,
-      transparent 91px
-    ),
-
-    radial-gradient(
-      circle at 85% 75%,
-      rgba(255,255,255,0.5) 0 120px,
-      transparent 121px
-    ),
-
-    linear-gradient(
-      135deg,
-      #f7c7f1 0%,
-      #f7c2ea 30%,
-      #ffd0d8 100%
+      circle,
+      rgba(103, 6, 38, 0.13) 1.5px,
+      transparent 1.7px
     );
 
-  font-family:
-    "Prompt",
-    Arial,
-    sans-serif;
-
-  color: var(--text);
+  background-size: 32px 32px;
+  background-position: 0 0;
 }
 
-
-/* =========================
-   SOFT DECORATION
-========================= */
-
-.pin-page::before {
-  content: "";
-
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  border-radius: 50%;
-
-  background: rgba(255,255,255,0.13);
-
-  top: -230px;
-  right: -180px;
-}
-
+/* REMOVE LARGE DECORATIVE CIRCLES */
+.pin-page::before,
 .pin-page::after {
-  content: "";
-
-  position: absolute;
-
-  width: 330px;
-  height: 330px;
-
-  border-radius: 50%;
-
-  background: rgba(255,255,255,0.13);
-
-  bottom: -200px;
-  left: -150px;
+  display: none;
 }
 
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
+/* FLOATING HEARTS */
 .floating-heart {
   position: absolute;
-
-  color: rgba(103, 6, 38, 0.22);
-
-  font-family:
-    "DM Serif Display",
-    serif;
-
+  color: rgba(103, 6, 38, 0.32);
   pointer-events: none;
-
-  animation:
-    floatHeart 5s ease-in-out infinite;
+  animation: floatHeart 5s ease-in-out infinite;
 }
 
 .heart-1 {
-  top: 13%;
-  left: 14%;
-  font-size: 28px;
+  top: 9%;
+  left: 12%;
+  font-size: 19px;
 }
 
 .heart-2 {
-  top: 28%;
+  top: 20%;
   right: 13%;
-  font-size: 18px;
-
+  font-size: 14px;
   animation-delay: 1s;
 }
 
 .heart-3 {
-  bottom: 22%;
-  left: 12%;
-  font-size: 20px;
-
+  bottom: 17%;
+  left: 15%;
+  font-size: 16px;
   animation-delay: 2s;
 }
 
 .heart-4 {
-  bottom: 14%;
-  right: 15%;
-  font-size: 30px;
-
+  bottom: 10%;
+  right: 12%;
+  font-size: 21px;
   animation-delay: 3s;
 }
 
 @keyframes floatHeart {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
+  0%, 100% {
+    transform: translateY(0);
   }
-
   50% {
-    transform: translateY(-10px) rotate(5deg);
+    transform: translateY(-7px);
   }
 }
 
-
-/* =========================
-   CONTAINER
-========================= */
-
+/* CONTAINER */
 .pin-container {
   position: relative;
-
   z-index: 2;
-
   width: 100%;
   max-width: 390px;
-
-  padding: 24px 20px;
-
+  padding: 12px;
   text-align: center;
 }
 
-
-/* =========================
-   CARD
-========================= */
-
+/* PIN CARD */
 .pin-card {
-  position: relative;
-
   width: 100%;
-
-  background:
-    rgba(255, 255, 255, 0.93);
-
-  border:
-    1px solid rgba(255,255,255,0.8);
-
-  border-radius: 28px;
-
-  padding:
-    35px 28px 28px;
+  background: var(--cream);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 24px;
+  padding: 30px 26px 24px;
 
   box-shadow:
-    0 30px 70px rgba(103, 6, 38, 0.13),
-    0 5px 20px rgba(103, 6, 38, 0.05);
-
-  backdrop-filter: blur(10px);
+    0 18px 45px rgba(103, 6, 38, 0.13);
 }
 
-
-/* =========================
-   TOP DECORATION
-========================= */
-
+/* TOP DECORATION */
 .tiny-line {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 9px;
-
-  margin-bottom: 13px;
+  margin-bottom: 12px;
 }
 
 .tiny-line span {
-  width: 35px;
+  width: 30px;
   height: 1px;
-
-  background:
-    rgba(103, 6, 38, 0.22);
+  background: rgba(103, 6, 38, 0.3);
 }
 
 .tiny-line i {
   color: var(--claret);
-
-  font-size: 16px;
-
+  font-size: 15px;
   font-style: normal;
 }
 
-
-/* =========================
-   EYEBROW
-========================= */
-
+/* TEXT */
 .eyebrow {
   color: var(--claret);
-
   font-size: 9px;
-
   font-weight: 600;
-
   letter-spacing: 3px;
-
   margin-bottom: 8px;
 }
 
-
-/* =========================
-   TITLE
-========================= */
-
 h1 {
-  font-family:
-    "DM Serif Display",
-    Georgia,
-    serif;
-
+  font-family: 'DM Serif Display', Georgia, serif;
   color: var(--claret);
-
-  font-size: 32px;
-
+  font-size: 31px;
   font-weight: 400;
-
-  line-height: 1.1;
-
-  margin-bottom: 10px;
+  line-height: 1.2;
+  margin-bottom: 9px;
 }
 
 h1 span {
-  font-size: 23px;
-
   color: var(--pink);
-
-  vertical-align: 4px;
-
-  margin-left: 3px;
+  font-size: 22px;
 }
-
-
-/* =========================
-   SUBTITLE
-========================= */
 
 .subtitle {
-  color: #8d7279;
-
+  color: #8c5868;
   font-size: 11px;
-
   line-height: 1.8;
-
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
-
-/* =========================
-   PIN DOTS
-========================= */
-
+/* PIN DOTS */
 .pin-dots {
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
-  gap: 15px;
-
+  gap: 17px;
+  margin-bottom: 23px;
   min-height: 18px;
-
-  margin-bottom: 25px;
 }
 
 .pin-dots span {
-  position: relative;
-
   width: 11px;
   height: 11px;
-
+  border: 1.7px solid var(--pink);
   border-radius: 50%;
-
-  border: 1.7px solid #d9a1ad;
-
   background: transparent;
-
-  transition:
-    0.2s ease;
+  position: relative;
+  transition: 0.2s ease;
 }
 
 .pin-dots span.active {
   border: none;
-
-  background: transparent;
-
-  transform: scale(1.05);
 }
 
 .pin-dots span.active::before {
   content: "♥";
-
   position: absolute;
-
   left: 50%;
   top: 50%;
-
-  transform:
-    translate(-50%, -50%);
-
+  transform: translate(-50%, -50%);
   color: var(--claret);
-
-  font-size: 14px;
-
-  line-height: 1;
+  font-size: 15px;
 }
 
-
-/* =========================
-   KEYPAD
-========================= */
-
+/* KEYPAD */
 .keypad {
   width: 100%;
-
-  max-width: 245px;
-
+  max-width: 240px;
   margin: 0 auto;
-
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 13px;
-
-  row-gap: 12px;
+  row-gap: 11px;
 }
 
-
-/* =========================
-   NUMBER
-========================= */
-
+/* NUMBER BUTTONS */
 .key {
-  width: 57px;
-  height: 57px;
-
+  width: 55px;
+  height: 55px;
   justify-self: center;
-
-  border: 0;
-
+  border: none;
   border-radius: 50%;
-
-  background:
-    linear-gradient(
-      145deg,
-      #ffffff,
-      #fff8fa
-    );
-
-  color: var(--text);
-
-  font-family:
-    "Prompt",
-    sans-serif;
-
+  background: var(--white);
+  color: var(--claret);
+  font-family: 'Prompt', sans-serif;
   font-size: 17px;
-
   font-weight: 500;
-
-  box-shadow:
-    0 5px 13px rgba(103, 6, 38, 0.07);
-
   cursor: pointer;
 
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    background 0.12s ease;
+  box-shadow:
+    0 4px 12px rgba(103, 6, 38, 0.07);
+
+  transition: 0.15s ease;
 }
 
 .key:hover {
   background: var(--soft-pink);
-
-  box-shadow:
-    0 6px 16px rgba(103, 6, 38, 0.1);
 }
 
 .key:active {
   transform: scale(0.9);
+  background: var(--pink);
 }
 
-
-/* =========================
-   CLEAR / DELETE
-========================= */
-
+/* CLEAR AND DELETE */
 .text-key {
-  width: 57px;
-  height: 57px;
-
+  width: 55px;
+  height: 55px;
   justify-self: center;
-
-  border: 0;
-
+  border: none;
   background: transparent;
-
   color: var(--claret);
-
-  font-family:
-    "Prompt",
-    sans-serif;
-
+  font-family: 'Prompt', sans-serif;
   font-size: 9px;
-
   font-weight: 600;
-
   letter-spacing: 1px;
-
   cursor: pointer;
-}
-
-.text-key:hover {
-  color: #9b153d;
 }
 
 .delete {
   font-size: 17px;
 }
 
-
-/* =========================
-   HINT
-========================= */
-
+/* FOOTER */
 .hint {
-  margin-top: 21px;
-
-  color: #b08b94;
-
+  margin-top: 18px;
+  color: #a66e7e;
   font-size: 8px;
-
   letter-spacing: 2px;
-
   text-transform: uppercase;
 }
 
+.bottom-note {
+  margin-top: 13px;
+  color: var(--claret);
+  opacity: 0.65;
+  font-family: 'DM Serif Display', serif;
+  font-size: 12px;
+}
 
-/* =========================
-   ERROR
-========================= */
-
+/* ERROR */
 #errorMessage {
   min-height: 18px;
-
-  margin-top: 10px;
-
+  margin-top: 8px;
   color: var(--claret);
-
   font-size: 10px;
 }
 
-
-/* =========================
-   SHAKE
-========================= */
-
 .pin-card.shake {
-  animation:
-    shake 0.35s ease;
+  animation: shake 0.35s ease;
 }
 
 @keyframes shake {
-
-  0% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(-7px);
-  }
-
-  50% {
-    transform: translateX(7px);
-  }
-
-  75% {
-    transform: translateX(-5px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
 }
 
-
-/* =========================
-   BOTTOM TEXT
-========================= */
-
-.bottom-note {
-  margin-top: 16px;
-
-  color: rgba(103, 6, 38, 0.48);
-
-  font-family:
-    "DM Serif Display",
-    serif;
-
-  font-size: 12px;
-
-  letter-spacing: 0.5px;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
+/* FIT SMALL SCREENS */
 @media (max-width: 380px) {
-
   .pin-container {
-    padding: 18px 14px;
+    max-width: 340px;
+    padding: 5px;
   }
 
   .pin-card {
-    border-radius: 24px;
-
-    padding:
-      30px 20px 25px;
-  }
-
-  h1 {
-    font-size: 29px;
+    padding: 26px 20px 20px;
+    border-radius: 21px;
   }
 
   .keypad {
-    column-gap: 9px;
+    column-gap: 8px;
+    row-gap: 9px;
   }
 
   .key,
   .text-key {
-    width: 54px;
-    height: 54px;
+    width: 51px;
+    height: 51px;
   }
 
   .pin-dots {
-    gap: 13px;
+    gap: 14px;
+  }
+}
+
+/* SHORT DESKTOP / MOBILE HEIGHT */
+@media (max-height: 700px) {
+  .pin-card {
+    padding-top: 20px;
+    padding-bottom: 16px;
+  }
+
+  .subtitle {
+    margin-bottom: 13px;
+  }
+
+  .pin-dots {
+    margin-bottom: 15px;
+  }
+
+  .keypad {
+    row-gap: 7px;
+  }
+
+  .key,
+  .text-key {
+    width: 49px;
+    height: 49px;
+  }
+
+  .hint {
+    margin-top: 12px;
   }
 }
 ```
